@@ -3,22 +3,6 @@
     min-height: 100vh;
 }
 
-/* ---------- Login ---------- */
-.admin-login-wrap {
-    min-height: 100vh;
-    padding: 2rem 1rem;
-}
-
-.admin-login-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 20px 45px rgba(22, 32, 43, 0.12);
-    padding: 2.2rem 2rem;
-    width: 100%;
-    max-width: 380px;
-    animation: cfFadeUp 0.5s var(--ease-out) both;
-}
-
 #panelWrap:not(.d-none) {
     animation: cfFadeUp 0.4s var(--ease-out) both;
 }
@@ -30,7 +14,6 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-    .admin-login-card,
     #panelWrap:not(.d-none),
     #tabProductos:not(.d-none),
     #tabCategorias:not(.d-none) {

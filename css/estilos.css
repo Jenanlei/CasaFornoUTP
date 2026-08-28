@@ -18,9 +18,6 @@
   --flame-2: #e85d04;
   --tomato: #b23a2f;
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Work Sans', sans-serif;
-
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
@@ -109,6 +106,10 @@ a {
 .brand-mark span,
 .footer-brand span {
   color: var(--forno-gold);
+}
+
+.brand-mark-ink {
+  color: var(--texto) !important;
 }
 
 .navbar-nav .nav-link {
@@ -421,6 +422,12 @@ a {
   box-shadow: 0 0 0 0.2rem rgba(242, 169, 59, 0.2);
 }
 
+.reserva-form .form-control[readonly] {
+  background-color: var(--forno-cream);
+  color: var(--texto);
+  cursor: not-allowed;
+}
+
 /* ---------- Alerta ---------- */
 .alert-forno {
   background: var(--forno-cream);
@@ -498,6 +505,240 @@ a {
 .whatsapp-float:hover {
   background: #1ebe5b;
   color: #fff;
+}
+
+/* ---------- Botón que abre la barra lateral ---------- */
+.btn-sidebar-toggle {
+  background: transparent;
+  border: 1px solid rgba(242, 169, 59, 0.5);
+  color: var(--forno-gold);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-sidebar-toggle:hover {
+  background: rgba(242, 169, 59, 0.15);
+  color: var(--forno-gold-light);
+}
+
+/* ---------- Barra lateral: info del local + acceso de clientes ---------- */
+#sidebarLocal {
+  width: 100%;
+  max-width: 380px;
+  background: var(--ink);
+  color: #fff;
+}
+
+#sidebarLocal .offcanvas-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sidebarLocal .offcanvas-title {
+  font-family: var(--font-display);
+  color: #fff;
+}
+
+.sidebar-content {
+  justify-content: space-evenly;
+  padding: 2rem 1.75rem;
+  gap: 1.5rem;
+}
+
+.sidebar-block {
+  width: 100%;
+}
+
+.sidebar-local-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.sidebar-info-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin-bottom: 0.85rem;
+}
+
+.sidebar-info-item:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar-info-item i {
+  color: var(--forno-gold);
+  font-size: 1rem;
+}
+
+.sidebar-heading {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+}
+
+.sidebar-social a {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.sidebar-social a:hover {
+  background: var(--forno-gold);
+  border-color: var(--forno-gold);
+  color: var(--forno-dark);
+}
+
+.sidebar-rule {
+  width: 100%;
+  border-color: rgba(255, 255, 255, 0.12);
+  margin: 0;
+}
+
+.sidebar-user-chip {
+  background: rgba(242, 169, 59, 0.12);
+  border: 1px solid rgba(242, 169, 59, 0.3);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  text-align: center;
+}
+
+/* ---------- Página de login (cliente / administrador) ---------- */
+.auth-body {
+  background: #fffaf2;
+  min-height: 100vh;
+}
+
+.auth-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.auth-shell {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  min-height: 560px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(22, 32, 43, 0.16);
+  animation: cfFadeUp 0.5s var(--ease-out) both;
+}
+
+/* ---- Panel de marca (izquierda, solo desktop) ---- */
+.auth-aside {
+  flex: 0 0 42%;
+  background: var(--ink);
+  color: #fff;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.auth-back-aside {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.auth-back-aside:hover {
+  color: var(--forno-gold);
+}
+
+.auth-aside-text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 28ch;
+}
+
+.auth-aside-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 1.5rem;
+}
+
+/* ---- Panel del formulario (derecha) ---- */
+.auth-form-panel {
+  flex: 1 1 auto;
+  padding: 3rem 2.75rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.auth-back {
+  color: var(--texto-suave);
+}
+
+.auth-back:hover {
+  color: var(--forno-fire);
+}
+
+/* ---- Acceso administrativo: casi invisible a propósito ---- */
+.auth-admin-trigger {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.25rem;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: var(--texto-suave);
+  opacity: 0.18;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.auth-admin-trigger:hover,
+.auth-admin-trigger:focus-visible {
+  opacity: 0.65;
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-shell {
+    animation: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .auth-form-panel {
+    padding: 2.5rem 1.75rem;
+  }
+
+  .auth-shell {
+    min-height: auto;
+  }
 }
 
 /* ---------- Responsive ---------- */
