@@ -1,68 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casa Forno | Pizzería a la leña</title>
-  <meta name="description" content="Casa Forno — pizza artesanal a la leña, bebidas y postres. Reserva tu mesa.">
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg g-body-tertiary sticky-top">
     <div class="container">
-      <div class="d-flex align-items-center">
-        <button class="btn-sidebar-toggle me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarLocal"
-          aria-controls="sidebarLocal" aria-label="Abrir información del local">
-          <i class="bi bi-person-circle"></i>
-        </button>
-        <a class="navbar-brand brand-mark" href="#inicio">CASA <span>FORNO</span></a>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
-        aria-controls="navContent" aria-expanded="false" aria-label="Abrir menú">
+      <button class="btn-sidebar-toggle me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarLocal"
+        aria-controls="sidebarLocal" aria-label="Abrir información del local">
+        <i class="bi bi-house-door-fill"></i>
+      </button>
+      <a class="navbar-brand brand-mark" href="#inicio">CASA <span>FORNO</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+      <div class="collapse navbar-collapse" bg-center id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#carta" id="cartaDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Carta</a>
-            <ul class="dropdown-menu" aria-labelledby="cartaDropdown" id="cartaDropdownMenu">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Carta
+            </a>
+            <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="categoria.html?cat=pizza">Pizzas artesanales</a></li>
               <li><a class="dropdown-item" href="categoria.html?cat=bebidas">Bebidas &amp; cervezas</a></li>
               <li><a class="dropdown-item" href="categoria.html?cat=piqueos">Piqueos y complementos</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
-          <li class="nav-item"><a class="nav-link" href="#reservas">Reservas</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="categoria.html?cat=bebidas">Bebidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#nosotros">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#reservas">Reservar</a>
+          </li>
         </ul>
-        <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" class="btn btn-forno">
-          <i class="bi bi-whatsapp me-1"></i> Contáctanos
-        </a>
+        <a class="btn btn-outline-warning" href="https://wa.me/51949224300" role="button">Contactanos</a>
       </div>
     </div>
   </nav>
-
-
   <header class="hero d-flex align-items-center" id="inicio">
-    <div class="hero-overlay"></div>
+    <!--<div class="hero-overlay"></div>-->
     <div class="container position-relative text-center text-white">
       <span class="badge hero-badge mb-3">Pizza artesanal a la leña</span>
       <h1 class="hero-title mb-4">El horno nunca<br><span>se apaga.</span></h1>
-      <p class="hero-sub mx-auto mb-4">Masa madre, ingredientes frescos y 6 horas de fermentación. Así hacemos cada
-        pizza en Casa Forno, Trujillo.</p>
+      <p class="hero-sub mx-auto mb-4">Masa madre, ingredientes frescos y 6 horas de fermentación. Así hacemos
+        cada pizza en Casa Forno, Trujillo.</p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
         <a href="#carta" class="btn btn-forno btn-lg px-4">Ver la carta</a>
         <a href="#reservas" class="btn btn-outline-light btn-lg px-4">Reservar mesa</a>
@@ -77,24 +76,58 @@
         <h2 class="section-title">Todo sale del mismo horno.</h2>
       </div>
 
-      <div class="row g-4 mb-5" id="cartaCategorias">
-        <!-- Las tarjetas de categoría se generan dinámicamente en js/script.js,
-             respetando el campo "visible" que se controla desde admin.html -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <a href="categoria.html?cat=pizza">
+            <div class="categoria-card">
+              <img src="https://images.unsplash.com/photo-1548369937-47519962c11a?q=80&w=700&auto=format&fit=crop"
+                alt="Pizzas artesanales a la leña">
+              <div class="categoria-overlay">
+                <h3>Pizzas</h3>
+                <p>Masa madre, horneadas a leña.</p>
+              </div>
+          </a>
+        </div>
       </div>
-
-      <div class="text-center mt-5">
-        <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
-          class="btn btn-forno-outline-2 px-4">Contáctanos</a>
+      <div class="col-md-4">
+        <a href="categoria.html?cat=bebidas">
+          <div class="categoria-card">
+            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=700&auto=format&fit=crop"
+              alt="Bebidas y cervezas artesanales">
+            <div class="categoria-overlay">
+              <h3>Bebidas</h3>
+              <p>Limonadas, jugos y cerveza artesanal.</p>
+            </div>
+        </a>
       </div>
     </div>
+    <div class="col-md-4">
+      <a href="categoria.html?cat=piqueos">
+        <div class="categoria-card">
+          <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=700&auto=format&fit=crop"
+            alt="Piqueos y complementos">
+          <div class="categoria-overlay">
+            <h3>Piqueos</h3>
+            <p>Alitas BBQ, salchipapa y más.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
+        class="btn btn-outline-dark px-5">Contáctanos</a>
+    </div>
+    </div>
+
   </section>
 
   <section class="section section-dark" id="nosotros">
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-lg-6">
-          <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=900&auto=format&fit=crop"
-            class="img-fluid rounded-2 shadow" alt="Pizzero preparando una pizza artesanal en Casa Forno">
+          <img src="img/pizzeroCasa_Forno.jpg" class="img-fluid rounded-2 shadow"
+            alt="Pizzero preparando una pizza artesanal en Casa Forno">
         </div>
         <div class="col-lg-6">
           <p class="eyebrow eyebrow-light">Desde el horno</p>
@@ -123,12 +156,12 @@
   </section>
 
   <section class="section pb-0" id="galeria">
-    <div class="container text-center mb-4">
+    <div class="container-fluid text-center mb-4">
       <p class="eyebrow">Galería</p>
       <h2 class="section-title">Directo del horno a tu mesa.</h2>
     </div>
 
-    <div id="galeriaCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel slide" data-bs-ride="carousel" id="galeriaCarousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#galeriaCarousel" data-bs-slide-to="0" class="active" aria-current="true"
           aria-label="Slide 1"></button>
@@ -137,7 +170,7 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=1600&auto=format&fit=crop"
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop"
             class="d-block w-100 carousel-img" alt="Mesa servida en Casa Forno">
           <div class="carousel-caption">
             <p class="eyebrow eyebrow-light">Salón</p>
@@ -145,7 +178,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop"
+          <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=1600&auto=format&fit=crop"
             class="d-block w-100 carousel-img" alt="Pizza saliendo del horno de barro">
           <div class="carousel-caption">
             <p class="eyebrow eyebrow-light">El horno</p>
@@ -153,7 +186,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=1600&auto=format&fit=crop"
+          <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=1600&auto=format&fit=crop"
             class="d-block w-100 carousel-img" alt="Detalle de pizza recién horneada">
           <div class="carousel-caption">
             <p class="eyebrow eyebrow-light">La receta</p>
@@ -183,6 +216,13 @@
 
       <div class="row justify-content-center">
         <div class="col-lg-7">
+          <!-- Aviso: se requiere haber iniciado sesión para reservar -->
+          <div id="reservaAvisoLogin" class="alert alert-forno text-center d-none">
+            <p class="mb-3">Para reservar una mesa necesitas iniciar sesión o crear una cuenta.</p>
+            <a href="login.html" class="btn btn-forno px-4">
+              <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión / Registrarme
+            </a>
+          </div>
           <form class="row g-3 needs-validation reserva-form" novalidate id="reservaForm">
             <div class="col-md-6">
               <label for="nombre" class="form-label">Nombre completo</label>
@@ -229,14 +269,6 @@
     </div>
   </section>
 
-  <div class="container">
-    <div class="alert alert-forno d-flex align-items-center gap-3" role="alert">
-      <i class="bi bi-scooter fs-4"></i>
-      <div>Hacemos delivery en un radio de 5 km alrededor de Av. Larco. Pide por WhatsApp y te confirmamos el tiempo de
-        entrega.</div>
-    </div>
-  </div>
-
   <footer class="footer">
     <div class="container">
       <div class="row gy-4">
@@ -263,19 +295,18 @@
         <div class="col-lg-4">
           <p class="footer-heading">Síguenos</p>
           <div class="d-flex gap-3 fs-5 mb-3">
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="https://wa.me/51987654321"><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://wa.me/51949224300"><i class="fa-brands fa-whatsapp"></i></a>
           </div>
           <a href="tel:+51987654321" class="footer-phone">+51 987 654 321</a>
         </div>
       </div>
       <hr class="footer-rule">
       <p class="text-center small text-light-50 mb-0">© 2026 Casa Forno. Proyecto académico — Marcos de Desarrollo Web,
-        UTP. · <a href="admin.html" class="text-light-50">Administración</a></p>
+        UTP</p>
     </div>
   </footer>
-
 
   <div class="modal fade" id="reservaModal" tabindex="-1" aria-labelledby="reservaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -297,8 +328,7 @@
     </div>
   </div>
 
-
-  <a href="https://wa.me/51949224300" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+  <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
     aria-label="Escríbenos por WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
@@ -309,30 +339,32 @@
       <h5 class="offcanvas-title brand-mark" id="sidebarLocalLabel">CASA <span>FORNO</span></h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
     </div>
-    <div class="offcanvas-body d-flex flex-column">
+    <div class="offcanvas-body d-flex flex-column align-items-center text-center sidebar-content">
 
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop"
-        class="sidebar-local-img mb-3" alt="Fachada referencial de Casa Forno">
+        class="sidebar-local-img" alt="Fachada referencial de Casa Forno">
 
-      <p class="sidebar-heading">El local</p>
-      <div class="mb-3">
+      <div class="sidebar-block">
+        <p class="sidebar-heading">El local</p>
         <p class="sidebar-info-item"><i class="bi bi-geo-alt-fill"></i> Av. Larco 850, Trujillo, La Libertad</p>
         <p class="sidebar-info-item"><i class="bi bi-clock-fill"></i> Lun - Dom · 1:00 pm – 11:00 pm</p>
         <p class="sidebar-info-item"><i class="bi bi-telephone-fill"></i> +51 987 654 321</p>
       </div>
 
-      <p class="sidebar-heading">Síguenos</p>
-      <div class="d-flex gap-2 sidebar-social mb-4">
-        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i
-            class="bi bi-whatsapp"></i></a>
+      <div class="sidebar-block">
+        <p class="sidebar-heading">Síguenos</p>
+        <div class="d-flex justify-content-center gap-3 sidebar-social">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i
+              class="bi bi-whatsapp"></i></a>
+        </div>
       </div>
 
       <hr class="sidebar-rule">
 
       <!-- Bloque visible cuando NO hay sesión iniciada -->
-      <div id="sidebarAuthLoggedOut">
+      <div id="sidebarAuthLoggedOut" class="sidebar-block w-100">
         <p class="sidebar-heading">Mi cuenta</p>
         <a href="login.html" class="btn btn-forno w-100">
           <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
@@ -340,7 +372,7 @@
       </div>
 
       <!-- Bloque visible cuando SÍ hay sesión iniciada -->
-      <div id="sidebarAuthLoggedIn" class="d-none">
+      <div id="sidebarAuthLoggedIn" class="sidebar-block w-100 d-none">
         <div class="sidebar-user-chip mb-3">
           <p class="mb-0 small text-light-70">Hola,</p>
           <p class="mb-0 fw-semibold" id="sidebarUserNombre"></p>

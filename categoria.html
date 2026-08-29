@@ -19,36 +19,43 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg g-body-tertiary sticky-top">
     <div class="container">
-      <div class="d-flex align-items-center">
-        <button class="btn-sidebar-toggle me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarLocal"
-          aria-controls="sidebarLocal" aria-label="Abrir información del local">
-          <i class="bi bi-person-circle"></i>
-        </button>
-        <a class="navbar-brand brand-mark" href="index.html#inicio">CASA <span>FORNO</span></a>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
-        aria-controls="navContent" aria-expanded="false" aria-label="Abrir menú">
+      <button class="btn-sidebar-toggle me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarLocal"
+        aria-controls="sidebarLocal" aria-label="Abrir información del local">
+        <i class="bi bi-house-door-fill"></i>
+      </button>
+      <a class="navbar-brand brand-mark" href="#inicio">CASA <span>FORNO</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html#inicio">Inicio</a></li>
+      <div class="collapse navbar-collapse" bg-center id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="index.html#carta" id="cartaDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">Carta</a>
-            <ul class="dropdown-menu" aria-labelledby="cartaDropdown" id="cartaDropdownMenu">
-              <!-- se completa dinámicamente con las categorías visibles -->
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Carta
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="categoria.html?cat=pizza">Pizzas artesanales</a></li>
+              <li><a class="dropdown-item" href="categoria.html?cat=bebidas">Bebidas &amp; cervezas</a></li>
+              <li><a class="dropdown-item" href="categoria.html?cat=piqueos">Piqueos y complementos</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.html#nosotros">Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#galeria">Galería</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#reservas">Reservas</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="categoria.html?cat=bebidas">Bebidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#nosotros">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#reservas">Reservar</a>
+          </li>
         </ul>
-        <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" class="btn btn-forno">
-          <i class="bi bi-whatsapp me-1"></i> Contáctanos
-        </a>
+        <a class="btn btn-outline-warning" href="https://wa.me/51949224300" role="button">Contactanos</a>
       </div>
     </div>
   </nav>
@@ -130,30 +137,32 @@
       <h5 class="offcanvas-title brand-mark" id="sidebarLocalLabel">CASA <span>FORNO</span></h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
     </div>
-    <div class="offcanvas-body d-flex flex-column">
+    <div class="offcanvas-body d-flex flex-column align-items-center text-center sidebar-content">
 
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop"
-        class="sidebar-local-img mb-3" alt="Fachada referencial de Casa Forno">
+        class="sidebar-local-img" alt="Fachada referencial de Casa Forno">
 
-      <p class="sidebar-heading">El local</p>
-      <div class="mb-3">
+      <div class="sidebar-block">
+        <p class="sidebar-heading">El local</p>
         <p class="sidebar-info-item"><i class="bi bi-geo-alt-fill"></i> Av. Larco 850, Trujillo, La Libertad</p>
         <p class="sidebar-info-item"><i class="bi bi-clock-fill"></i> Lun - Dom · 1:00 pm – 11:00 pm</p>
         <p class="sidebar-info-item"><i class="bi bi-telephone-fill"></i> +51 987 654 321</p>
       </div>
 
-      <p class="sidebar-heading">Síguenos</p>
-      <div class="d-flex gap-2 sidebar-social mb-4">
-        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i
-            class="bi bi-whatsapp"></i></a>
+      <div class="sidebar-block">
+        <p class="sidebar-heading">Síguenos</p>
+        <div class="d-flex justify-content-center gap-3 sidebar-social">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i
+              class="bi bi-whatsapp"></i></a>
+        </div>
       </div>
 
       <hr class="sidebar-rule">
 
       <!-- Bloque visible cuando NO hay sesión iniciada -->
-      <div id="sidebarAuthLoggedOut">
+      <div id="sidebarAuthLoggedOut" class="sidebar-block w-100">
         <p class="sidebar-heading">Mi cuenta</p>
         <a href="login.html" class="btn btn-forno w-100">
           <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
@@ -161,7 +170,7 @@
       </div>
 
       <!-- Bloque visible cuando SÍ hay sesión iniciada -->
-      <div id="sidebarAuthLoggedIn" class="d-none">
+      <div id="sidebarAuthLoggedIn" class="sidebar-block w-100 d-none">
         <div class="sidebar-user-chip mb-3">
           <p class="mb-0 small text-light-70">Hola,</p>
           <p class="mb-0 fw-semibold" id="sidebarUserNombre"></p>
