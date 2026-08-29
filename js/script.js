@@ -1,5 +1,3 @@
-// Casa Forno — reservas: exige sesión de cliente + validación del formulario
-
 // Muestra el aviso "inicia sesión" o el formulario de reserva según si hay
 // una sesión de cliente activa (ver js/auth.js). Si hay sesión, se precarga
 // y bloquea el nombre con el del cliente logueado.

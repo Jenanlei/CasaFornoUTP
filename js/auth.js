@@ -3,8 +3,6 @@
    Se usa en index.html y categoria.html. El registro y el inicio de sesión
    en sí ocurren en login.html (js/login.js); este archivo solo lee la
    sesión guardada y actualiza lo que se muestra en la barra lateral.
-   NOTA (proyecto académico): la sesión se guarda en sessionStorage solo con
-   fines de demostración, sin backend real.
    ========================================================================== */
 
 function cfGetSesionCliente() {

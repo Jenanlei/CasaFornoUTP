@@ -3,11 +3,6 @@
    Usa las validaciones nativas de Bootstrap (needs-validation / was-validated)
    en los 3 formularios: login de cliente, registro de cliente y login de
    administrador.
-   NOTA (proyecto académico): tanto los usuarios registrados como las
-   credenciales de administrador se validan solo del lado del cliente
-   (localStorage/sessionStorage), con fines de demostración. No debe usarse
-   tal cual en producción; un sitio real necesitaría un backend que valide
-   credenciales y guarde contraseñas de forma segura (hash, etc).
    ========================================================================== */
 
 const ADMIN_USUARIO = 'admin';
