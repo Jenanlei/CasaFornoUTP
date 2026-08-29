@@ -1,67 +1,35 @@
-// Casa Forno — validación del formulario de reservas y modal de confirmación
+// Casa Forno — reservas: exige sesión de cliente + validación del formulario
 
-// Contenido visual (imagen, texto) de cada categoría conocida para la carta pública.
-// Si en el panel de administración se agrega una categoría nueva, se usa un contenido genérico.
-const CF_CARTA_INFO = {
-  pizza: {
-    imagen: 'https://images.unsplash.com/photo-1548369937-47519962c11a?q=80&w=700&auto=format&fit=crop',
-    alt: 'Pizzas artesanales a la leña',
-    descripcion: 'Masa madre, horneadas a leña.',
-  },
-  bebidas: {
-    imagen: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=700&auto=format&fit=crop',
-    alt: 'Bebidas y cervezas artesanales',
-    descripcion: 'Limonadas, jugos y cerveza artesanal.',
-  },
-  piqueos: {
-    imagen: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=700&auto=format&fit=crop',
-    alt: 'Piqueos y complementos',
-    descripcion: 'Alitas BBQ, salchipapa y más.',
-  },
-};
+// Muestra el aviso "inicia sesión" o el formulario de reserva según si hay
+// una sesión de cliente activa (ver js/auth.js). Si hay sesión, se precarga
+// y bloquea el nombre con el del cliente logueado.
+function cfActualizarAccesoReservas() {
+  const aviso = document.getElementById('reservaAvisoLogin');
+  const formulario = document.getElementById('reservaForm');
+  if (!aviso || !formulario || typeof cfGetSesionCliente !== 'function') return;
 
-function cfRenderCartaCategorias() {
-  const contenedor = document.getElementById('cartaCategorias');
-  if (!contenedor || typeof cfGetCategorias !== 'function') return;
+  const sesion = cfGetSesionCliente();
+  const nombreInput = document.getElementById('nombre');
 
-  const categorias = cfGetCategorias().filter(c => c.visible !== false);
-
-  contenedor.innerHTML = categorias.map(c => {
-    const info = CF_CARTA_INFO[c.id] || {
-      imagen: 'https://placehold.co/700x500?text=' + encodeURIComponent(c.nombre),
-      alt: c.nombre,
-      descripcion: '',
-    };
-    const contenidoTarjeta = `
-      <div class="categoria-card">
-        <img src="${info.imagen}" alt="${info.alt}">
-        <div class="categoria-overlay">
-          <h3>${c.nombre}</h3>
-          <p>${info.descripcion}</p>
-        </div>
-      </div>
-    `;
-    return `
-      <div class="col-md-4">
-        <a href="categoria.html?cat=${c.id}">${contenidoTarjeta}</a>
-      </div>
-    `;
-  }).join('');
-
-  poblarDropdownCarta(categorias);
-}
-
-function poblarDropdownCarta(categorias) {
-  const menu = document.getElementById('cartaDropdownMenu');
-  if (!menu) return;
-  menu.innerHTML = categorias.map(c => `
-    <li><a class="dropdown-item" href="categoria.html?cat=${c.id}">${c.nombre}</a></li>
-  `).join('');
+  if (sesion) {
+    aviso.classList.add('d-none');
+    formulario.classList.remove('d-none');
+    if (nombreInput) {
+      nombreInput.value = sesion.nombre;
+      nombreInput.readOnly = true;
+    }
+  } else {
+    aviso.classList.remove('d-none');
+    formulario.classList.add('d-none');
+    if (nombreInput) {
+      nombreInput.readOnly = false;
+    }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  cfRenderCartaCategorias();
+  cfActualizarAccesoReservas();
 
   const form = document.getElementById('reservaForm');
   const reservaModalEl = document.getElementById('reservaModal');
@@ -77,6 +45,14 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       event.stopPropagation();
 
+      // Defensa adicional: si por alguna razón no hay sesión, no se procesa
+      // la reserva (el formulario debería estar oculto en ese caso).
+      if (typeof cfGetSesionCliente === 'function' && !cfGetSesionCliente()) {
+        cfActualizarAccesoReservas();
+        document.getElementById('reservaAvisoLogin').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
       if (form.checkValidity()) {
         const nombre = document.getElementById('nombre').value;
         const fecha = document.getElementById('fecha').value;
@@ -88,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         form.classList.remove('was-validated');
         form.reset();
+        cfActualizarAccesoReservas(); // vuelve a precargar el nombre tras el reset()
         reservaModal.show();
       } else {
         form.classList.add('was-validated');

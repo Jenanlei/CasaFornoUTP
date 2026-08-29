@@ -1,11 +1,10 @@
 /* ==========================================================================
-   Página pública de categoría (una categoría completa por página)
    Solo muestra categorías y productos con visible !== false (control desde admin.html).
    Sin control de stock ni carrito: cada producto tiene un botón directo
    para pedir por WhatsApp.
    ========================================================================== */
 
-const WHATSAPP_NUMERO = '51987654321'; // sin '+' ni espacios, formato wa.me
+const WHATSAPP_NUMERO = '51949224300';
 
 document.addEventListener('DOMContentLoaded', function () {
   const grid = document.getElementById('categoriaGrid');

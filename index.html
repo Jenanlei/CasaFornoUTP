@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg g-body-tertiary sticky-top">
+  <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
     <div class="container">
       <button class="btn-sidebar-toggle me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarLocal"
         aria-controls="sidebarLocal" aria-label="Abrir información del local">
@@ -26,7 +26,7 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" bg-center id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
@@ -86,38 +86,41 @@
                 <h3>Pizzas</h3>
                 <p>Masa madre, horneadas a leña.</p>
               </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="categoria.html?cat=bebidas">
+            <div class="categoria-card">
+              <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=700&auto=format&fit=crop"
+                alt="Bebidas y cervezas artesanales">
+              <div class="categoria-overlay">
+                <h3>Bebidas</h3>
+                <p>Limonadas, jugos y cerveza artesanal.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="categoria.html?cat=piqueos">
+            <div class="categoria-card">
+              <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=700&auto=format&fit=crop"
+                alt="Piqueos y complementos">
+              <div class="categoria-overlay">
+                <h3>Piqueos</h3>
+                <p>Alitas BBQ, salchipapa y más.</p>
+              </div>
+            </div>
           </a>
         </div>
       </div>
-      <div class="col-md-4">
-        <a href="categoria.html?cat=bebidas">
-          <div class="categoria-card">
-            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=700&auto=format&fit=crop"
-              alt="Bebidas y cervezas artesanales">
-            <div class="categoria-overlay">
-              <h3>Bebidas</h3>
-              <p>Limonadas, jugos y cerveza artesanal.</p>
-            </div>
-        </a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <a href="categoria.html?cat=piqueos">
-        <div class="categoria-card">
-          <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=700&auto=format&fit=crop"
-            alt="Piqueos y complementos">
-          <div class="categoria-overlay">
-            <h3>Piqueos</h3>
-            <p>Alitas BBQ, salchipapa y más.</p>
-          </div>
-        </div>
-      </a>
-    </div>
 
-    <div class="text-center mt-5">
-      <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
-        class="btn btn-outline-dark px-5">Contáctanos</a>
-    </div>
+      <div class="text-center mt-5">
+        <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
+          class="btn btn-outline-dark px-5">Contáctanos</a>
+      </div>
     </div>
 
   </section>
@@ -223,7 +226,7 @@
               <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión / Registrarme
             </a>
           </div>
-          <form class="row g-3 needs-validation reserva-form" novalidate id="reservaForm">
+          <form class="row g-3 needs-validation reserva-form d-none" novalidate id="reservaForm">
             <div class="col-md-6">
               <label for="nombre" class="form-label">Nombre completo</label>
               <input type="text" class="form-control" id="nombre" required>
@@ -387,8 +390,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/script.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>

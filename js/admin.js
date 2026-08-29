@@ -28,14 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
     });
 
-    document.getElementById('adminTabs').addEventListener('click', function (e) {
-        const btn = e.target.closest('[data-tab]');
-        if (!btn) return;
-        document.querySelectorAll('#adminTabs .nav-link').forEach(el => el.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('tabProductos').classList.toggle('d-none', btn.dataset.tab !== 'productos');
-        document.getElementById('tabCategorias').classList.toggle('d-none', btn.dataset.tab !== 'categorias');
-    });
+    // El cambio entre "Productos" y "Categorías" ahora lo maneja el propio
+    // componente Tab de Bootstrap (data-bs-toggle="tab" en admin.html);
+    // ya no hace falta JS propio para mostrar/ocultar los paneles.
 
     document.getElementById('btnNuevoProducto').addEventListener('click', () => abrirModalProducto());
     document.getElementById('btnNuevaCategoria').addEventListener('click', () => abrirModalCategoria());

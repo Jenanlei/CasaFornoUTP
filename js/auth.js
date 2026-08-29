@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', function () {
     btnCerrarSesion.addEventListener('click', function () {
       sessionStorage.removeItem('cf_sesion_cliente');
       cfActualizarSidebarAuth();
+      // Si la página tiene la sección de reservas (index.html), la sincroniza
+      // para que vuelva a pedir inicio de sesión.
+      if (typeof cfActualizarAccesoReservas === 'function') {
+        cfActualizarAccesoReservas();
+      }
     });
   }
 });

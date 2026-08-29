@@ -57,60 +57,69 @@
 
         <div class="container py-4">
 
-            <ul class="nav nav-tabs mb-4" id="adminTabs">
-                <li class="nav-item">
-                    <button class="nav-link active" data-tab="productos">Productos</button>
+            <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tabBtnProductos" data-bs-toggle="tab"
+                        data-bs-target="#tabProductos" type="button" role="tab" aria-controls="tabProductos"
+                        aria-selected="true">Productos</button>
                 </li>
-                <li class="nav-item">
-                    <button class="nav-link" data-tab="categorias">Categorías</button>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tabBtnCategorias" data-bs-toggle="tab"
+                        data-bs-target="#tabCategorias" type="button" role="tab" aria-controls="tabCategorias"
+                        aria-selected="false">Categorías</button>
                 </li>
             </ul>
 
-            <!-- ---- PRODUCTOS ---- -->
-            <div id="tabProductos">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h2 class="h4 mb-0">Productos</h2>
-                    <button class="btn btn-forno" id="btnNuevoProducto"><i class="bi bi-plus-lg me-1"></i>Nuevo
-                        producto</button>
-                </div>
-                <div class="table-responsive">
-                    <table class="table admin-table align-middle">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Nombre</th>
-                                <th>Categoría</th>
-                                <th>Precio</th>
-                                <th class="text-end">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaProductos"></tbody>
-                    </table>
-                </div>
-            </div>
+            <div class="tab-content" id="adminTabsContent">
 
-            <!-- ---- CATEGORÍAS ---- -->
-            <div id="tabCategorias" class="d-none">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h2 class="h4 mb-0">Categorías</h2>
-                    <button class="btn btn-forno" id="btnNuevaCategoria"><i class="bi bi-plus-lg me-1"></i>Nueva
-                        categoría</button>
+                <!-- ---- PRODUCTOS ---- -->
+                <div class="tab-pane fade show active" id="tabProductos" role="tabpanel"
+                    aria-labelledby="tabBtnProductos" tabindex="0">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 mb-0">Productos</h2>
+                        <button class="btn btn-forno" id="btnNuevoProducto"><i class="bi bi-plus-lg me-1"></i>Nuevo
+                            producto</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaProductos"></tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table admin-table align-middle">
-                        <thead>
-                            <tr>
-                                <th>Ícono</th>
-                                <th>Nombre</th>
-                                <th>ID</th>
-                                <th class="text-end">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaCategorias"></tbody>
-                    </table>
-                </div>
-            </div>
 
+                <!-- ---- CATEGORÍAS ---- -->
+                <div class="tab-pane fade" id="tabCategorias" role="tabpanel" aria-labelledby="tabBtnCategorias"
+                    tabindex="0">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 mb-0">Categorías</h2>
+                        <button class="btn btn-forno" id="btnNuevaCategoria"><i class="bi bi-plus-lg me-1"></i>Nueva
+                            categoría</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Ícono</th>
+                                    <th>Nombre</th>
+                                    <th>ID</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaCategorias"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 

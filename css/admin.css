@@ -7,16 +7,9 @@
     animation: cfFadeUp 0.4s var(--ease-out) both;
 }
 
-#tabProductos:not(.d-none),
-#tabCategorias:not(.d-none) {
-    animation: cfFadeUp 0.35s var(--ease-out) both;
-}
 
 @media (prefers-reduced-motion: reduce) {
-
-    #panelWrap:not(.d-none),
-    #tabProductos:not(.d-none),
-    #tabCategorias:not(.d-none) {
+    #panelWrap:not(.d-none) {
         animation: none;
     }
 }

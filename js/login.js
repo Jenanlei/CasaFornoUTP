@@ -27,11 +27,8 @@ function cfSetSesionCliente(usuario) {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const btnRolCliente = document.getElementById('btnRolCliente');
-  const btnRolAdmin = document.getElementById('btnRolAdmin');
   const panelClienteLogin = document.getElementById('panelClienteLogin');
   const panelClienteRegistro = document.getElementById('panelClienteRegistro');
-  const panelAdminLogin = document.getElementById('panelAdminLogin');
   const subtitulo = document.getElementById('authSubtitulo');
 
   const loginClienteForm = document.getElementById('loginClienteForm');
@@ -40,19 +37,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const registroClave = document.getElementById('registroClave');
   const registroClave2 = document.getElementById('registroClave2');
 
-  function mostrarRol(rol) {
-    btnRolCliente.classList.toggle('active', rol === 'cliente');
-    btnRolAdmin.classList.toggle('active', rol === 'admin');
-
-    panelAdminLogin.classList.toggle('d-none', rol !== 'admin');
-    panelClienteLogin.classList.toggle('d-none', rol !== 'cliente');
+  // ---------- Selector cliente/admin: son pestañas reales de Bootstrap ----------
+  // (data-bs-toggle="pill" en los botones). Bootstrap se encarga de mostrar y
+  // ocultar cada panel (#panelCliente / #panelAdmin); aquí solo escuchamos su
+  // evento "shown.bs.tab" para actualizar el subtítulo y resetear la vista
+  // de login/registro del cliente cada vez que se cambia de pestaña.
+  document.getElementById('authRoleTabs').addEventListener('shown.bs.tab', function (e) {
+    const esAdmin = e.target.id === 'btnRolAdmin';
+    subtitulo.textContent = esAdmin ? 'Panel de administración' : 'Ingresa a tu cuenta';
+    panelClienteLogin.classList.remove('d-none');
     panelClienteRegistro.classList.add('d-none');
-
-    subtitulo.textContent = rol === 'admin' ? 'Panel de administración' : 'Ingresa a tu cuenta';
-  }
-
-  btnRolCliente.addEventListener('click', () => mostrarRol('cliente'));
-  btnRolAdmin.addEventListener('click', () => mostrarRol('admin'));
+  });
 
   // ---------- Alternar login / registro dentro de "cliente" ----------
   document.getElementById('irARegistro').addEventListener('click', function (e) {
