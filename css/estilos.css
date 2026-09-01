@@ -23,8 +23,15 @@
 }
 
 @keyframes cfFadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 * {
@@ -50,10 +57,8 @@ a {
 }
 
 .eyebrow {
-  text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.75rem;
-  font-weight: 600;
   color: var(--forno-fire);
   margin-bottom: 0.4rem;
 }
@@ -64,7 +69,6 @@ a {
 
 .section-title {
   font-size: clamp(1.7rem, 3vw, 2.3rem);
-  font-weight: 600;
 }
 
 .section-title-light {
@@ -84,6 +88,7 @@ a {
 }
 
 /* ---------- Navbar ---------- */
+
 .navbar {
   background: var(--ink);
   padding: 0.9rem 0;
@@ -102,7 +107,7 @@ a {
 }
 
 .brand-mark-ink {
-    color: var(--texto) !important;
+  color: var(--texto) !important;
 }
 
 .navbar-nav .nav-link {
@@ -127,7 +132,6 @@ a {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f2a93b' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-
 .dropdown-menu {
   border: none;
   border-radius: 8px;
@@ -141,6 +145,7 @@ a {
 }
 
 /* ---------- Botones ---------- */
+
 .btn-forno {
   background: var(--forno-gold);
   border-color: var(--forno-gold);
@@ -183,6 +188,7 @@ a {
 }
 
 /* ---------- Hero ---------- */
+
 .hero {
   position: relative;
   min-height: 92vh;
@@ -221,6 +227,7 @@ a {
 }
 
 /* ---------- Categorías ---------- */
+
 .categoria-card {
   position: relative;
   border-radius: 14px;
@@ -229,9 +236,6 @@ a {
 }
 
 .categoria-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   transition: transform 0.4s ease;
 }
 
@@ -242,10 +246,11 @@ a {
 .categoria-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(22, 32, 43, 0.85), rgba(22, 32, 43, 0) 60%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  background: linear-gradient(
+    0deg,
+    rgba(22, 32, 43, 0.85),
+    rgba(22, 32, 43, 0) 60%
+  );
   padding: 1.2rem;
   color: #fff;
 }
@@ -262,6 +267,7 @@ a {
 }
 
 /* ---------- Productos ---------- */
+
 .producto-card {
   border: none;
   border-radius: 14px;
@@ -312,21 +318,49 @@ a {
 }
 
 /* ---------- Página de categoría ---------- */
+
 .categoria-hero {
   min-height: 32vh;
   background: linear-gradient(rgba(22, 32, 43, 0.6), rgba(22, 32, 43, 0.75)),
-              url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
+    url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
   padding: 3rem 0;
 }
-.hero-title-sm { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); }
-.cf-hero-in { animation: cfFadeUp 0.6s var(--ease-out) both; }
-.cf-card-in { animation: cfFadeUp 0.6s var(--ease-out) both; }
-@media (prefers-reduced-motion: reduce) { .cf-hero-in, .cf-card-in { animation: none; } }
-.breadcrumb-forno { --bs-breadcrumb-divider-color: rgba(255,255,255,0.5); }
-.breadcrumb-forno .breadcrumb-item, .breadcrumb-forno .breadcrumb-item a { color: rgba(255,255,255,0.75); }
-.breadcrumb-forno .breadcrumb-item.active { color: var(--forno-gold-light); }
+
+.hero-title-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.cf-hero-in {
+  animation: cfFadeUp 0.6s var(--ease-out) both;
+}
+
+.cf-card-in {
+  animation: cfFadeUp 0.6s var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf-hero-in,
+  .cf-card-in {
+    animation: none;
+  }
+}
+
+.breadcrumb-forno {
+  --bs-breadcrumb-divider-color: rgba(255, 255, 255, 0.5);
+}
+
+.breadcrumb-forno .breadcrumb-item,
+.breadcrumb-forno .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.breadcrumb-forno .breadcrumb-item.active {
+  color: var(--forno-gold-light);
+}
 
 /* ---------- Sección oscura (Nosotros) ---------- */
+
 .section-dark {
   background: var(--ink);
   color: var(--cream);
@@ -346,21 +380,19 @@ a {
 
 .stat-label {
   font-size: 0.75rem;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.6);
 }
 
 /* ---------- Carrusel ---------- */
+
 .carousel-img {
   height: 60vh;
   min-height: 320px;
-  object-fit: cover;
   filter: brightness(0.7);
 }
 
 .carousel-caption {
-  text-align: left;
   left: 6%;
   bottom: 12%;
   max-width: 26rem;
@@ -375,6 +407,7 @@ a {
 }
 
 /* ---------- Reservas ---------- */
+
 .reserva-form .form-control,
 .reserva-form .form-select {
   border-radius: 8px;
@@ -395,6 +428,7 @@ a {
 }
 
 /* ---------- Alerta ---------- */
+
 .alert-forno {
   background: var(--forno-cream);
   border: 1px solid rgba(242, 169, 59, 0.4);
@@ -403,6 +437,7 @@ a {
 }
 
 /* ---------- Footer ---------- */
+
 .footer {
   background: var(--ink);
   color: #fff;
@@ -414,7 +449,6 @@ a {
 }
 
 .footer-heading {
-  text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   color: var(--forno-gold);
@@ -445,24 +479,21 @@ a {
 }
 
 /* ---------- Modal ---------- */
+
 .modal-content {
   border-radius: 14px;
   border: none;
 }
 
 /* ---------- WhatsApp flotante ---------- */
+
 .whatsapp-float {
-  position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   width: 56px;
   height: 56px;
-  border-radius: 50%;
   background: #25d366;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1.6rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   z-index: 1050;
@@ -474,16 +505,13 @@ a {
 }
 
 /* ---------- Botón que abre la barra lateral ---------- */
+
 .btn-sidebar-toggle {
   background: transparent;
   border: 1px solid rgba(242, 169, 59, 0.5);
   color: var(--forno-gold);
-  border-radius: 50%;
   width: 40px;
   height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1.15rem;
   transition: background 0.2s ease, color 0.2s ease;
 }
@@ -494,6 +522,7 @@ a {
 }
 
 /* ---------- Barra lateral: info del local + acceso de clientes ---------- */
+
 #sidebarLocal {
   width: 100%;
   max-width: 380px;
@@ -521,16 +550,11 @@ a {
 }
 
 .sidebar-local-img {
-  width: 100%;
   height: 220px;
-  object-fit: cover;
   border-radius: 14px;
 }
 
 .sidebar-info-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 0.6rem;
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
@@ -547,7 +571,6 @@ a {
 }
 
 .sidebar-heading {
-  text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.5);
@@ -557,11 +580,7 @@ a {
 .sidebar-social a {
   width: 46px;
   height: 46px;
-  border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.85);
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -584,10 +603,10 @@ a {
   border: 1px solid rgba(242, 169, 59, 0.3);
   border-radius: 10px;
   padding: 0.9rem 1rem;
-  text-align: center;
 }
 
 /* ---------- Página de login (cliente / administrador) ---------- */
+
 .auth-body {
   background: var(--cream);
   min-height: 100vh;
@@ -616,6 +635,7 @@ a {
 
 /* Selector "Soy cliente / Soy administrador": nav-pills de Bootstrap con
    los colores de marca en lugar de los de Bootstrap por defecto. */
+
 .auth-role-toggle {
   border-radius: 999px;
   overflow: hidden;
@@ -645,7 +665,9 @@ a {
 }
 
 /* ---------- Responsive ---------- */
+
 @media (max-width: 991.98px) {
+
   .hero {
     min-height: auto;
     padding: 6rem 0 4rem;
@@ -673,6 +695,7 @@ a {
 }
 
 @media (max-width: 575.98px) {
+
   .categoria-card {
     height: 200px;
   }
