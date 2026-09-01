@@ -250,3 +250,46 @@ function confirmarEliminacion() {
     }
     bootstrap.Modal.getInstance(document.getElementById('modalConfirmar')).hide();
 }
+
+
+/* ================= Lógica Panel de Íconos ================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const inputIcono = document.getElementById('categoriaIcono');
+  const previewIcono = document.getElementById('iconoPreview');
+  const offcanvasEl = document.getElementById('panelIconos');
+  const offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+  const buscador = document.getElementById('buscadorIconos');
+  const items = document.querySelectorAll('.item-icono');
+
+  // Seleccionar ícono al hacer clic
+  document.querySelectorAll('.btn-icono').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const iconoClase = btn.getAttribute('data-icon');
+      
+      inputIcono.value = iconoClase;
+      if (previewIcono) {
+        previewIcono.className = `bi ${iconoClase}`;
+      }
+      
+      // Cierra únicamente el panel lateral sin alterar el modal
+      offcanvasInstance.hide();
+    });
+  });
+
+  // Filtrar íconos con el buscador
+  buscador.addEventListener('input', (e) => {
+    const texto = e.target.value.toLowerCase().trim();
+    items.forEach(item => {
+      const palabrasClave = item.getAttribute('data-name');
+      item.style.display = palabrasClave.includes(texto) ? 'block' : 'none';
+    });
+  });
+
+  // Actualizar preview si se escribe manualmente
+  if (inputIcono && previewIcono) {
+    inputIcono.addEventListener('input', (e) => {
+      previewIcono.className = `bi ${e.target.value.trim()}`;
+    });
+  }
+});
