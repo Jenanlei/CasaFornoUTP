@@ -18,11 +18,11 @@
 </head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
     <div class="container">
-      <button class="btn-sidebar-toggle me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarLocal"
-        aria-controls="sidebarLocal" aria-label="Abrir información del local">
+      <button class="btn-sidebar-toggle me-2 rounded-circle d-inline-flex align-items-center justify-content-center"
+        type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarLocal" aria-controls="sidebarLocal"
+        aria-label="Abrir información del local">
         <i class="bi bi-house-door-fill"></i>
       </button>
       <a class="navbar-brand brand-mark" href="#inicio">CASA <span>FORNO</span></a>
@@ -63,7 +63,7 @@
   <!-- ============ ENCABEZADO DE CATEGORÍA ============ -->
   <header class="categoria-hero d-flex align-items-center">
     <div class="container position-relative text-center text-white cf-hero-in">
-      <p class="eyebrow eyebrow-light mb-2">Nuestra carta</p>
+      <p class="eyebrow eyebrow-light text-uppercase fw-semibold mb-2">Nuestra carta</p>
       <h1 class="hero-title-sm" id="categoriaTitulo">Categoría</h1>
       <nav aria-label="breadcrumb" class="d-flex justify-content-center mt-3">
         <ol class="breadcrumb breadcrumb-forno mb-0">
@@ -97,7 +97,7 @@
             todos los días.</p>
         </div>
         <div class="col-6 col-lg-2">
-          <p class="footer-heading">Explora</p>
+          <p class="footer-heading text-uppercase">Explora</p>
           <ul class="list-unstyled footer-links">
             <li><a href="index.html#carta">Carta</a></li>
             <li><a href="index.html#nosotros">Nosotros</a></li>
@@ -105,14 +105,14 @@
           </ul>
         </div>
         <div class="col-6 col-lg-2">
-          <p class="footer-heading">Horario</p>
+          <p class="footer-heading text-uppercase">Horario</p>
           <ul class="list-unstyled footer-links">
             <li>Lun - Dom</li>
             <li>1:00 pm – 11:00 pm</li>
           </ul>
         </div>
         <div class="col-lg-4">
-          <p class="footer-heading">Síguenos</p>
+          <p class="footer-heading text-uppercase">Síguenos</p>
           <div class="d-flex gap-3 fs-5 mb-3">
             <a href="#"><i class="bi bi-instagram"></i></a>
             <a href="#"><i class="bi bi-facebook"></i></a>
@@ -127,7 +127,8 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+  <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
+    class="whatsapp-float position-fixed rounded-circle d-flex align-items-center justify-content-center"
     aria-label="Escríbenos por WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
@@ -141,21 +142,27 @@
     <div class="offcanvas-body d-flex flex-column align-items-center text-center sidebar-content">
 
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop"
-        class="sidebar-local-img" alt="Fachada referencial de Casa Forno">
+        class="sidebar-local-img w-100 object-fit-cover" alt="Fachada referencial de Casa Forno">
 
       <div class="sidebar-block">
-        <p class="sidebar-heading">El local</p>
-        <p class="sidebar-info-item"><i class="bi bi-geo-alt-fill"></i> Av. Larco 850, Trujillo, La Libertad</p>
-        <p class="sidebar-info-item"><i class="bi bi-clock-fill"></i> Lun - Dom · 1:00 pm – 11:00 pm</p>
-        <p class="sidebar-info-item"><i class="bi bi-telephone-fill"></i> +51 987 654 321</p>
+        <p class="sidebar-heading text-uppercase">El local</p>
+        <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i class="bi bi-geo-alt-fill"></i>
+          Av. Larco 850, Trujillo, La Libertad</p>
+        <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i class="bi bi-clock-fill"></i>
+          Lun - Dom · 1:00 pm – 11:00 pm</p>
+        <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i
+            class="bi bi-telephone-fill"></i> +51 987 654 321</p>
       </div>
 
       <div class="sidebar-block">
-        <p class="sidebar-heading">Síguenos</p>
+        <p class="sidebar-heading text-uppercase">Síguenos</p>
         <div class="d-flex justify-content-center gap-3 sidebar-social">
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i
+          <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle"
+            aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle"
+            aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
+            class="d-inline-flex align-items-center justify-content-center rounded-circle" aria-label="WhatsApp"><i
               class="bi bi-whatsapp"></i></a>
         </div>
       </div>
@@ -164,7 +171,7 @@
 
       <!-- Bloque visible cuando NO hay sesión iniciada -->
       <div id="sidebarAuthLoggedOut" class="sidebar-block w-100">
-        <p class="sidebar-heading">Mi cuenta</p>
+        <p class="sidebar-heading text-uppercase">Mi cuenta</p>
         <a href="login.html" class="btn btn-forno w-100">
           <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
         </a>
@@ -172,7 +179,7 @@
 
       <!-- Bloque visible cuando SÍ hay sesión iniciada -->
       <div id="sidebarAuthLoggedIn" class="sidebar-block w-100 d-none">
-        <div class="sidebar-user-chip mb-3">
+        <div class="sidebar-user-chip mb-3 text-center">
           <p class="mb-0 small text-light-70">Hola,</p>
           <p class="mb-0 fw-semibold" id="sidebarUserNombre"></p>
         </div>
