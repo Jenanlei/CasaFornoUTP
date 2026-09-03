@@ -52,7 +52,7 @@
             <a class="nav-link" href="#reservas">Reservar</a>
           </li>
         </ul>
-        <a class="btn btn-outline-warning" href="https://wa.me/51949224300" role="button">Contactanos</a>
+        <a class="btn btn-outline-warning" href="https://wa.me/51949224300" role="button" target="_blank">Contactanos</a>
       </div>
     </div>
   </nav>
@@ -294,22 +294,32 @@
         <div class="col-6 col-lg-2">
           <p class="footer-heading text-uppercase">Horario</p>
           <ul class="list-unstyled footer-links">
-            <li>Lun - Dom</li>
-            <li>1:00 pm – 11:00 pm</li>
+            <li>Lun &ndash; Dom</li>
+            <li>1:00 pm &ndash; 11:00 pm</li>
           </ul>
         </div>
         <div class="col-lg-4">
           <p class="footer-heading text-uppercase">Síguenos</p>
           <div class="d-flex gap-3 fs-5 mb-3">
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://wa.me/51949224300"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://wa.me/51949224300" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
           </div>
-          <a href="tel:+51987654321" class="footer-phone">+51 987 654 321</a>
+          <a href="tel:+51987654321" class="footer-phone">
+            <i class="bi bi-telephone-fill"></i> +51 987 654 321
+          </a>
         </div>
+
       </div>
       <hr class="footer-rule">
-      <p class="text-center small text-light-50 mb-0">© 2026 Casa Forno. Proyecto académico — Marcos de Desarrollo Web,
+      <p class="text-center small text-light-50 mb-0">&copy; 2026 Casa Forno. Proyecto académico &ndash; Marcos de
+        Desarrollo Web,
         UTP</p>
     </div>
   </footer>
@@ -356,7 +366,7 @@
         <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i class="bi bi-geo-alt-fill"></i>
           Av. Larco 850, Trujillo, La Libertad</p>
         <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i class="bi bi-clock-fill"></i>
-          Lun - Dom · 1:00 pm – 11:00 pm</p>
+          Lun &ndash; Dom · 1:00 pm &ndash; 11:00 pm</p>
         <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i
             class="bi bi-telephone-fill"></i> +51 987 654 321</p>
       </div>
@@ -376,7 +386,7 @@
 
       <hr class="sidebar-rule">
 
-      <!-- Bloque visible cuando NO hay sesión iniciada -->
+      <!-- NO hay sesión iniciada -->
       <div id="sidebarAuthLoggedOut" class="sidebar-block w-100">
         <p class="sidebar-heading text-uppercase">Mi cuenta</p>
         <a href="login.html" class="btn btn-forno w-100">
@@ -384,7 +394,7 @@
         </a>
       </div>
 
-      <!-- Bloque visible cuando SÍ hay sesión iniciada -->
+      <!-- sesión iniciada -->
       <div id="sidebarAuthLoggedIn" class="sidebar-block w-100 d-none">
         <div class="sidebar-user-chip mb-3 text-center">
           <p class="mb-0 small text-light-70">Hola,</p>

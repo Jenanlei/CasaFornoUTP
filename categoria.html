@@ -33,7 +33,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="index.html?#inicio">Inicio</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,13 +49,13 @@
             <a class="nav-link" href="categoria.html?cat=bebidas">Bebidas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#nosotros">Nosotros</a>
+            <a class="nav-link" href="index.html?#nosotros">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#reservas">Reservar</a>
+            <a class="nav-link" href="index.html?#reservas">Reservar</a>
           </li>
         </ul>
-        <a class="btn btn-outline-warning" href="https://wa.me/51949224300" role="button">Contactanos</a>
+        <a class="btn btn-outline-warning" href="https://wa.me/51949224300" role="button" target="_blank">Contactanos</a>
       </div>
     </div>
   </nav>
@@ -67,7 +67,7 @@
       <h1 class="hero-title-sm" id="categoriaTitulo">Categoría</h1>
       <nav aria-label="breadcrumb" class="d-flex justify-content-center mt-3">
         <ol class="breadcrumb breadcrumb-forno mb-0">
-          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="index.html?#carta">Inicio</a></li>
           <li class="breadcrumb-item active" id="categoriaBreadcrumb" aria-current="page">Categoría</li>
         </ol>
       </nav>
@@ -78,7 +78,6 @@
   <section class="section">
     <div class="container">
       <div class="row g-4" id="categoriaGrid">
-        <!-- productos generados por js/categoria.js -->
       </div>
 
       <div class="text-center mt-5">
@@ -107,8 +106,8 @@
         <div class="col-6 col-lg-2">
           <p class="footer-heading text-uppercase">Horario</p>
           <ul class="list-unstyled footer-links">
-            <li>Lun - Dom</li>
-            <li>1:00 pm – 11:00 pm</li>
+            <li>Lun &ndash; Dom</li>
+            <li>1:00 pm &ndash; 11:00 pm</li>
           </ul>
         </div>
         <div class="col-lg-4">
@@ -122,7 +121,7 @@
         </div>
       </div>
       <hr class="footer-rule">
-      <p class="text-center small text-light-50 mb-0">© 2026 Casa Forno. Proyecto académico — Marcos de Desarrollo Web,
+      <p class="text-center small text-light-50 mb-0">&copy; 2026 Casa Forno. Proyecto académico &ndash; Marcos de Desarrollo Web,
         UTP</p>
     </div>
   </footer>
@@ -149,7 +148,7 @@
         <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i class="bi bi-geo-alt-fill"></i>
           Av. Larco 850, Trujillo, La Libertad</p>
         <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i class="bi bi-clock-fill"></i>
-          Lun - Dom · 1:00 pm – 11:00 pm</p>
+          Lun &ndash; Dom · 1:00 pm &ndash; 11:00 pm</p>
         <p class="sidebar-info-item d-flex align-items-center justify-content-center"><i
             class="bi bi-telephone-fill"></i> +51 987 654 321</p>
       </div>
@@ -169,7 +168,7 @@
 
       <hr class="sidebar-rule">
 
-      <!-- Bloque visible cuando NO hay sesión iniciada -->
+      <!-- sesión sin  iniciar -->
       <div id="sidebarAuthLoggedOut" class="sidebar-block w-100">
         <p class="sidebar-heading text-uppercase">Mi cuenta</p>
         <a href="login.html" class="btn btn-forno w-100">
@@ -177,7 +176,7 @@
         </a>
       </div>
 
-      <!-- Bloque visible cuando SÍ hay sesión iniciada -->
+      <!-- sesión iniciada -->
       <div id="sidebarAuthLoggedIn" class="sidebar-block w-100 d-none">
         <div class="sidebar-user-chip mb-3 text-center">
           <p class="mb-0 small text-light-70">Hola,</p>

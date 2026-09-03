@@ -1,6 +1,5 @@
 :root {
   --forno-dark: #16202b;
-  --forno-dark-2: #1e2c3a;
   --forno-gold: #f2a93b;
   --forno-gold-light: #ffcb73;
   --forno-cream: #fdf6e8;
@@ -12,11 +11,7 @@
   --font-body: 'Poppins', sans-serif;
 
   --ink: #18120f;
-  --ink-soft: #241a15;
   --cream: #f6efe4;
-  --flame-1: #f4b23a;
-  --flame-2: #e85d04;
-  --tomato: #b23a2f;
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
@@ -193,7 +188,7 @@ a {
   position: relative;
   min-height: 92vh;
   background: linear-gradient(rgba(22, 32, 43, 0.55), rgba(22, 32, 43, 0.75)),
-    url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
+    url('https://tse1.mm.bing.net/th/id/OIP.OCMniicanOw48zMtlJyFowHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3') center/cover no-repeat;
 }
 
 .hero-overlay {
@@ -321,8 +316,7 @@ a {
 
 .categoria-hero {
   min-height: 32vh;
-  background: linear-gradient(rgba(22, 32, 43, 0.6), rgba(22, 32, 43, 0.75)),
-    url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
+  background: #18120f center/cover no-repeat;
   padding: 3rem 0;
 }
 
@@ -632,9 +626,6 @@ a {
 .auth-back:hover {
   color: var(--forno-gold);
 }
-
-/* Selector "Soy cliente / Soy administrador": nav-pills de Bootstrap con
-   los colores de marca en lugar de los de Bootstrap por defecto. */
 
 .auth-role-toggle {
   border-radius: 999px;

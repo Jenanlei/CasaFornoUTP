@@ -8,7 +8,7 @@ const WHATSAPP_NUMERO = '51949224300';
 
 document.addEventListener('DOMContentLoaded', function () {
   const grid = document.getElementById('categoriaGrid');
-  if (!grid) return; // no estamos en categoria.html
+  if (!grid) return; 
 
   const categoriasVisibles = cfGetCategorias().filter(c => c.visible !== false);
 
