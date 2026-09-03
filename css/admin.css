@@ -4,11 +4,11 @@
 }
 
 #panelIconos {
-  z-index: 1080 !important;
+    z-index: 1080 !important;
 }
 
 .offcanvas-backdrop {
-  z-index: 1070 !important;
+    z-index: 1070 !important;
 }
 
 #panelWrap:not(.d-none) {
