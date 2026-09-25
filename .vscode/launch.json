@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CasaFornoApplication<casa-forno>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.casaforno.casa_forno.CasaFornoApplication",
+            "projectName": "casa-forno",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
