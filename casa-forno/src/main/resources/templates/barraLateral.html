@@ -1,0 +1,65 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarLocal" aria-labelledby="sidebarLocalLabel"
+    th:fragment="barraLateral">
+
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title brand-mark" id="sidebarLocalLabel">CASA <span>FORNO</span></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Cerrar"></button>
+    </div>
+
+    <div class="offcanvas-body d-flex flex-column align-items-center text-center sidebar-content">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop"
+            class="sidebar-local-img w-100 object-fit-cover" alt="Fachada referencial de Casa Forno">
+        <div class="sidebar-block">
+            <p class="sidebar-heading text-uppercase">El local</p>
+            <p class="sidebar-info-item d-flex align-items-center justify-content-center">
+                <i class="bi bi-geo-alt-fill"></i>
+                Av. Larco 850, Trujillo, La Libertad
+            </p>
+            <p class="sidebar-info-item d-flex align-items-center justify-content-center">
+                <i class="bi bi-clock-fill"></i>
+                Lun &ndash; Dom · 1:00 pm &ndash; 11:00 pm
+            </p>
+            <p class="sidebar-info-item d-flex align-items-center justify-content-center">
+                <i class="bi bi-telephone-fill"></i> +51 987 654 321
+            </p>
+        </div>
+
+        <div class="sidebar-block">
+            <p class="sidebar-heading text-uppercase">Síguenos</p>
+            <div class="d-flex justify-content-center gap-3 sidebar-social">
+                <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle"
+                    aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="d-inline-flex align-items-center justify-content-center rounded-circle"
+                    aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
+                    class="d-inline-flex align-items-center justify-content-center rounded-circle"
+                    aria-label="WhatsApp">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+
+        <hr class="sidebar-rule">
+
+        <!-- sesión sin iniciar -->
+        <div id="sidebarAuthLoggedOut" class="sidebar-block w-100">
+            <p class="sidebar-heading text-uppercase">Mi cuenta</p>
+            <a href="login.html" class="btn btn-forno w-100">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
+            </a>
+        </div>
+
+        <!-- sesión iniciada -->
+        <div id="sidebarAuthLoggedIn" class="sidebar-block w-100 d-none">
+            <div class="sidebar-user-chip mb-3 text-center">
+                <p class="mb-0 small text-light-70">Hola,</p>
+                <p class="mb-0 fw-semibold" id="sidebarUserNombre"></p>
+            </div>
+            <button type="button" class="btn btn-outline-forno w-100" id="btnCerrarSesionCliente">
+                <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+            </button>
+        </div>
+
+    </div>
+</div>
