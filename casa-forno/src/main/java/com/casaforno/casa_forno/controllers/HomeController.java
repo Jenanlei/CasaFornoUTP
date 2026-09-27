@@ -1,15 +1,15 @@
 package com.casaforno.casa_forno.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.ui.Model;
 
 
 @Controller 
 public class HomeController {
 
-    @GetMapping("/index")
+    @GetMapping({"/", "/index"})
     public String inicio() {
         return "index";
     }
@@ -29,13 +29,5 @@ public class HomeController {
     public String admin(){
         return "admin";
     }
-
-
-    @GetMapping("/panelIconos")
-    public String panelIconos() {
-        return "panelIconos";
-    }   
-
-    
-
+  
 }

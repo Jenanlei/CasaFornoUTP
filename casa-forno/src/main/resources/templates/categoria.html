@@ -11,14 +11,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 
 <body>
-  <!-- REUTILIZACIÓN DEL NAVBAR -->
-  <nav th:replace="header :: header"></nav>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav th:replace="~{fragments/navbar :: navegación}"></nav>
 
-  <!-- ============ ENCABEZADO DE CATEGORÍA ============ -->
+  <!-- ENCABEZADO DE CATEGORÍA  -->
   <header class="categoria-hero d-flex align-items-center">
     <div class="container position-relative text-center text-white cf-hero-in">
       <p class="eyebrow eyebrow-light text-uppercase fw-semibold mb-2">Nuestra carta</p>
@@ -32,19 +32,20 @@
     </div>
   </header>
 
-  <!-- ============ GRILLA DE PRODUCTOS ============ -->
+  <!--  GRILLA DE PRODUCTOS  -->
   <section class="section">
     <div class="container">
       <div class="row g-4" id="categoriaGrid">
       </div>
 
       <div class="text-center mt-5">
-        <a th:href="@{/#carta}" class="btn btn-forno-outline-2 px-4"><i class="bi bi-arrow-left me-2"></i>Ver todas las categorías</a>
+        <a th:href="@{/#carta}" class="btn btn-forno-outline-2 px-4"><i class="bi bi-arrow-left me-2"></i>Ver todas
+          las categorías</a>
       </div>
     </div>
   </section>
-  
-   <div th:replace="footer :: footer"></div>
+  <!--FOOTER-->
+  <footer th:replace="~{fragments/footer :: piedepagina}"></footer>
 
   <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
     class="whatsapp-float position-fixed rounded-circle d-flex align-items-center justify-content-center"
@@ -52,13 +53,13 @@
     <i class="bi bi-whatsapp"></i>
   </a>
 
-  <!-- ============ REUTILIZACION BARRA LATERAL: info del local + acceso de clientes ============ -->
-  <div th:replace="~{barraLateral :: barraLateral}"></div>
+  <!--  BARRA LATERAL: info del local + acceso de clientes  -->
+ <div th:replace="~{fragments/barralateral :: barra-Lateral}"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/categoria.js"></script>
-  <script src="js/auth.js"></script>
+  <script th:src="@{/js/data.js}"></script>
+  <script th:src="@{/js/categoria.js}"></script>
+  <script th:src="@{/js/auth.js}"></script>
 </body>
 
 </html>

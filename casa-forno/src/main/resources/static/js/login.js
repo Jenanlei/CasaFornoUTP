@@ -1,10 +1,4 @@
-/* ==========================================================================
-   Página única de acceso: cliente (login/registro) o administrador
-   Usa las validaciones nativas de Bootstrap (needs-validation / was-validated)
-   en los 3 formularios: login de cliente, registro de cliente y login de
-   administrador.
-   ========================================================================== */
-
+/*datos de administrador*/
 const ADMIN_USUARIO = 'admin';
 const ADMIN_CLAVE   = 'forno2026';
 
@@ -32,11 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const registroClave = document.getElementById('registroClave');
   const registroClave2 = document.getElementById('registroClave2');
 
-  // ---------- Selector cliente/admin: son pestañas reales de Bootstrap ----------
-  // (data-bs-toggle="pill" en los botones). Bootstrap se encarga de mostrar y
-  // ocultar cada panel (#panelCliente / #panelAdmin); aquí solo escuchamos su
-  // evento "shown.bs.tab" para actualizar el subtítulo y resetear la vista
-  // de login/registro del cliente cada vez que se cambia de pestaña.
+  // ---------- Alterar pestañas ----------
   document.getElementById('authRoleTabs').addEventListener('shown.bs.tab', function (e) {
     const esAdmin = e.target.id === 'btnRolAdmin';
     subtitulo.textContent = esAdmin ? 'Panel de administración' : 'Ingresa a tu cuenta';
@@ -96,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     cfSetSesionCliente({ nombre: usuario.nombre, correo: usuario.correo });
-    window.location.href = 'index.html';
+    window.location.href = '/index';
   });
 
   // ---------- Cliente: registrarme ----------
@@ -130,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     usuarios.push({ nombre, correo, clave });
     cfGuardarUsuarios(usuarios);
     cfSetSesionCliente({ nombre, correo });
-    window.location.href = 'index.html';
+    window.location.href = '/index';
   });
 
   // ---------- Administrador: iniciar sesión ----------
@@ -152,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (usuario === ADMIN_USUARIO && clave === ADMIN_CLAVE) {
       sessionStorage.setItem('cf_admin_auth', '1');
-      window.location.href = 'admin.html';
+      window.location.href = '/admin';
     } else {
       errorEl.classList.remove('d-none');
     }

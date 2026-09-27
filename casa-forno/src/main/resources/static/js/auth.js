@@ -1,10 +1,4 @@
-/* ==========================================================================
-   Estado de sesión del cliente en la barra lateral
-   Se usa en index.html y categoria.html. El registro y el inicio de sesión
-   en sí ocurren en login.html (js/login.js); este archivo solo lee la
-   sesión guardada y actualiza lo que se muestra en la barra lateral.
-   ========================================================================== */
-
+/* Estado de sesión del cliente en la barra lateral */
 function cfGetSesionCliente() {
   return JSON.parse(sessionStorage.getItem('cf_sesion_cliente') || 'null');
 }
