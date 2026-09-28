@@ -1,9 +1,3 @@
-/* ==========================================================================
-   Solo muestra categorías y productos con visible !== false (control desde admin.html).
-   Sin control de stock ni carrito: cada producto tiene un botón directo
-   para pedir por WhatsApp.
-   ========================================================================== */
-
 const WHATSAPP_NUMERO = '51949224300';
 
 document.addEventListener('DOMContentLoaded', function () {

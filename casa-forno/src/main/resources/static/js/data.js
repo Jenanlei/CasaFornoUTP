@@ -29,7 +29,7 @@ const SEED_PRODUCTOS = [
   // Piqueos
   { id: 'q1', categoriaId: 'piqueos', nombre: 'Alitas BBQ (8u)', descripcion: 'Alitas bañadas en salsa BBQ de la casa.', precio: 22.00, imagen: 'https://images.unsplash.com/photo-1608039755401-742074f0548d?q=80&w=600&auto=format&fit=crop', visible: true },
   { id: 'q2', categoriaId: 'piqueos', nombre: 'Salchipapa',       descripcion: 'Papas fritas, salchicha y salsas.',       precio: 18.00, imagen: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=600&auto=format&fit=crop', visible: true },
-  { id: 'q3', categoriaId: 'piqueos', nombre: 'Pan al ajo',       descripcion: 'Pan artesanal horneado con ajo y hierbas.', precio: 10.00, imagen: 'https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?q=80&w=600&auto=format&fit=crop', visible: true },
+  { id: 'q3', categoriaId: 'piqueos', nombre: 'Pan al ajo',       descripcion: 'Pan artesanal horneado con ajo y hierbas.', precio: 10.00, imagen: 'https://i.blogs.es/8e3bfe/pan_ajo/840_560.jpg', visible: true },
 ];
 
 /* ---------- Inicialización ---------- */

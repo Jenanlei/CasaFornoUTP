@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="pageTitle">Carta | Casa Forno</title>
   <meta name="description" content="Casa Forno — carta completa por categoría.">
@@ -32,7 +32,7 @@
     </div>
   </header>
 
-  <!--  GRILLA DE PRODUCTOS  -->
+  <!--PRODUCTOS  -->
   <section class="section">
     <div class="container">
       <div class="row g-4" id="categoriaGrid">
@@ -54,7 +54,7 @@
   </a>
 
   <!--  BARRA LATERAL: info del local + acceso de clientes  -->
- <div th:replace="~{fragments/barralateral :: barra-Lateral}"></div>
+ <div th:replace="~{fragments/barraLateral :: barra-lateral}"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script th:src="@{/js/data.js}"></script>

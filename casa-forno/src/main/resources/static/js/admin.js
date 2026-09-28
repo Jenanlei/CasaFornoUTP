@@ -28,10 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
     });
 
-    // El cambio entre "Productos" y "Categorías" ahora lo maneja el propio
-    // componente Tab de Bootstrap (data-bs-toggle="tab" en admin.html);
-    // ya no hace falta JS propio para mostrar/ocultar los paneles.
-
     document.getElementById('btnNuevoProducto').addEventListener('click', () => abrirModalProducto());
     document.getElementById('btnNuevaCategoria').addEventListener('click', () => abrirModalCategoria());
     document.getElementById('formProducto').addEventListener('submit', guardarProducto);
