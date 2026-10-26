@@ -1,15 +1,3 @@
-/*datos de administrador*/
-const ADMIN_USUARIO = 'admin';
-const ADMIN_CLAVE   = 'forno2026';
-
-function cfGetUsuarios() {
-  return JSON.parse(localStorage.getItem('cf_usuarios') || '[]');
-}
-
-function cfGuardarUsuarios(usuarios) {
-  localStorage.setItem('cf_usuarios', JSON.stringify(usuarios));
-}
-
 function cfSetSesionCliente(usuario) {
   sessionStorage.setItem('cf_sesion_cliente', JSON.stringify(usuario));
 }
@@ -60,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
   registroClave.addEventListener('input', validarClavesCoinciden);
   registroClave2.addEventListener('input', validarClavesCoinciden);
 
-  // ---------- Cliente: iniciar sesión ----------
-  loginClienteForm.addEventListener('submit', function (e) {
+  // ---------- Cliente: iniciar sesión (POST /api/auth/login) ----------
+  loginClienteForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -77,20 +65,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const correo = document.getElementById('loginEmail').value.trim().toLowerCase();
     const clave = document.getElementById('loginClave').value;
 
-    const usuarios = cfGetUsuarios();
-    const usuario = usuarios.find(u => u.correo === correo && u.clave === clave);
-
-    if (!usuario) {
+    try {
+      const usuario = await cfApi('/api/auth/login', { method: 'POST', body: { correo, clave } });
+      cfSetSesionCliente({ id: usuario.id, nombre: usuario.nombre, correo: usuario.correo });
+      window.location.href = '/index';
+    } catch (err) {
+      if (err.status !== 401) {
+        errorEl.textContent = cfTextoError(err);
+      }
       errorEl.classList.remove('d-none');
-      return;
     }
-
-    cfSetSesionCliente({ nombre: usuario.nombre, correo: usuario.correo });
-    window.location.href = '/index';
   });
 
-  // ---------- Cliente: registrarme ----------
-  registroClienteForm.addEventListener('submit', function (e) {
+  // ---------- Cliente: registrarme (POST /api/usuarios) ----------
+  registroClienteForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -109,22 +97,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const correo = document.getElementById('registroEmail').value.trim().toLowerCase();
     const clave = document.getElementById('registroClave').value;
 
-    const usuarios = cfGetUsuarios();
-
-    if (usuarios.some(u => u.correo === correo)) {
-      errorEl.textContent = 'Ya existe una cuenta registrada con ese correo.';
+    try {
+      const usuario = await cfApi('/api/usuarios', { method: 'POST', body: { nombre, correo, clave } });
+      cfSetSesionCliente({ id: usuario.id, nombre: usuario.nombre, correo: usuario.correo });
+      window.location.href = '/index';
+    } catch (err) {
+      errorEl.textContent = cfTextoError(err);
       errorEl.classList.remove('d-none');
-      return;
     }
-
-    usuarios.push({ nombre, correo, clave });
-    cfGuardarUsuarios(usuarios);
-    cfSetSesionCliente({ nombre, correo });
-    window.location.href = '/index';
   });
 
-  // ---------- Administrador: iniciar sesión ----------
-  loginAdminForm.addEventListener('submit', function (e) {
+  // ---------- Administrador: iniciar sesión (mismo endpoint, exige rol ADMIN) ----------
+  loginAdminForm.addEventListener('submit', async function (e) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -137,13 +121,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     loginAdminForm.classList.add('was-validated');
 
-    const usuario = document.getElementById('adminUsuario').value.trim();
+    // El "usuario" del administrador es su correo (ej. admin@casaforno.com)
+    const correo = document.getElementById('adminUsuario').value.trim().toLowerCase();
     const clave = document.getElementById('adminClave').value;
 
-    if (usuario === ADMIN_USUARIO && clave === ADMIN_CLAVE) {
+    try {
+      const usuario = await cfApi('/api/auth/login', { method: 'POST', body: { correo, clave } });
+      if (usuario.rol !== 'ADMIN') throw { status: 401 };
       sessionStorage.setItem('cf_admin_auth', '1');
       window.location.href = '/admin';
-    } else {
+    } catch (err) {
       errorEl.classList.remove('d-none');
     }
   });

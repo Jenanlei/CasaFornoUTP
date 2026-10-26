@@ -1,16 +1,23 @@
 const WHATSAPP_NUMERO = '51949224300';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
   const grid = document.getElementById('categoriaGrid');
-  if (!grid) return; 
+  if (!grid) return;
 
-  const categoriasVisibles = cfGetCategorias().filter(c => c.visible !== false);
+  let categoriasVisibles = [];
+  try {
+    const categorias = await cfApi('/api/categorias');
+    categoriasVisibles = categorias.filter(c => c.visible !== false);
+  } catch (e) {
+    grid.innerHTML = `<p class="text-center text-muted py-5">No se pudo cargar la carta. Inténtalo de nuevo.</p>`;
+    return;
+  }
 
   poblarDropdownCarta(categoriasVisibles);
 
   const params = new URLSearchParams(window.location.search);
-  const catId = params.get('cat');
-  const categoria = categoriasVisibles.find(c => c.id === catId) || categoriasVisibles[0];
+  const slug = params.get('cat');
+  const categoria = categoriasVisibles.find(c => c.slug === slug) || categoriasVisibles[0];
 
   if (!categoria) {
     document.getElementById('categoriaTitulo').textContent = 'Categoría no disponible';
@@ -23,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('categoriaTitulo').textContent = categoria.nombre;
   document.getElementById('categoriaBreadcrumb').textContent = categoria.nombre;
 
-  renderProductos(categoria);
+  await renderProductos(categoria);
 
   // Navbar: fondo más sólido al hacer scroll (igual que en el resto del sitio)
   const nav = document.getElementById('mainNav');
@@ -38,16 +45,23 @@ function poblarDropdownCarta(categorias) {
   const menu = document.getElementById('cartaDropdownMenu');
   if (!menu) return;
   const params = new URLSearchParams(window.location.search);
-  const catActivaId = params.get('cat');
+  const slugActivo = params.get('cat');
 
   menu.innerHTML = categorias.map(c => `
-    <li><a class="dropdown-item ${c.id === catActivaId ? 'active' : ''}" href="categoria.html?cat=${c.id}">${c.nombre}</a></li>
+    <li><a class="dropdown-item ${c.slug === slugActivo ? 'active' : ''}" href="/categoria?cat=${c.slug}">${c.nombre}</a></li>
   `).join('');
 }
 
-function renderProductos(categoria) {
+async function renderProductos(categoria) {
   const grid = document.getElementById('categoriaGrid');
-  const productos = cfGetProductosPorCategoria(categoria.id).filter(p => p.visible !== false);
+  let productos = [];
+  try {
+    const lista = await cfApi('/api/productos?categoria=' + encodeURIComponent(categoria.slug));
+    productos = lista.filter(p => p.visible !== false);
+  } catch (e) {
+    grid.innerHTML = `<p class="text-center text-muted py-5">No se pudieron cargar los productos.</p>`;
+    return;
+  }
 
   if (!productos.length) {
     grid.innerHTML = `<p class="text-center text-muted py-5">Aún no hay productos en esta categoría. Vuelve pronto.</p>`;

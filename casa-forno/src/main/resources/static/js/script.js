@@ -39,33 +39,71 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (form) {
-    form.addEventListener('submit', function (event) {
+    // Campo del JSON del servidor -> id del input del formulario
+    const camposReserva = {
+      telefono: 'telefono',
+      fecha: 'fecha',
+      hora: 'hora',
+      personas: 'personas',
+      nota: 'notaReserva'
+    };
+
+    form.addEventListener('submit', async function (event) {
       event.preventDefault();
       event.stopPropagation();
 
       // Defensa adicional: si por alguna razón no hay sesión, no se procesa
       // la reserva (el formulario debería estar oculto en ese caso).
-      if (typeof cfGetSesionCliente === 'function' && !cfGetSesionCliente()) {
+      const sesion = typeof cfGetSesionCliente === 'function' ? cfGetSesionCliente() : null;
+      if (!sesion || !sesion.id) {
         cfActualizarAccesoReservas();
         document.getElementById('reservaAvisoLogin').scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
-      if (form.checkValidity()) {
-        const nombre = document.getElementById('nombre').value;
-        const fecha = document.getElementById('fecha').value;
-        const hora = document.getElementById('hora').value;
+      form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
 
-        document.getElementById('modalNombreReserva').textContent = nombre;
-        document.getElementById('modalFechaReserva').textContent = fecha;
-        document.getElementById('modalHoraReserva').textContent = hora;
+      // 1ª capa: validación del navegador
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
+      }
+
+      const reserva = {
+        telefono: document.getElementById('telefono').value.trim(),
+        fecha: document.getElementById('fecha').value,
+        hora: document.getElementById('hora').value,
+        personas: Number(document.getElementById('personas').value),
+        nota: document.getElementById('notaReserva').value.trim(),
+        usuario: { id: sesion.id }
+      };
+
+      // 2ª capa: validación del servidor (Spring) y guardado en MySQL
+      try {
+        await cfApi('/api/reservas', { method: 'POST', body: reserva });
+
+        document.getElementById('modalNombreReserva').textContent = document.getElementById('nombre').value;
+        document.getElementById('modalFechaReserva').textContent = reserva.fecha;
+        document.getElementById('modalHoraReserva').textContent = reserva.hora;
 
         form.classList.remove('was-validated');
         form.reset();
         cfActualizarAccesoReservas(); // vuelve a precargar el nombre tras el reset()
         reservaModal.show();
-      } else {
-        form.classList.add('was-validated');
+      } catch (e) {
+        form.classList.remove('was-validated');
+        if (e.status === 400 && e.errores && e.errores.length) {
+          e.errores.forEach(function (err) {
+            const campo = document.getElementById(camposReserva[err.field]);
+            if (campo) {
+              campo.classList.add('is-invalid');
+              const msg = campo.parentElement.querySelector('.invalid-feedback');
+              if (msg) msg.textContent = err.defaultMessage;
+            }
+          });
+        } else {
+          alert(cfTextoError(e));
+        }
       }
     });
   }
@@ -74,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', function () {
       const producto = button.dataset.producto;
       const mensaje = encodeURIComponent('Hola, quiero pedir: ' + producto);
-      window.open('https://wa.me/51987654321?text=' + mensaje, '_blank', 'noopener,noreferrer');
+      window.open('https://wa.me/51949224300?text=' + mensaje, '_blank', 'noopener,noreferrer');
     });
   });
 
@@ -87,6 +125,3 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
-
-
-

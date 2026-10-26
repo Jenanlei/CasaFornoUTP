@@ -34,7 +34,7 @@
 
       <div class="row g-4 mb-5">
         <div class="col-md-4">
-          <a th:href="@{/#carta}">
+          <a th:href="@{/categoria(cat='pizzas')}">
             <div class="categoria-card">
               <img src="https://images.unsplash.com/photo-1548369937-47519962c11a?q=80&w=700&auto=format&fit=crop"
                 class="w-100 h-100 object-fit-cover" alt="Pizzas artesanales a la leña">
@@ -47,7 +47,7 @@
         </div>
 
         <div class="col-md-4">
-          <a th:href="@{/#bebidas}">
+          <a th:href="@{/categoria(cat='bebidas')}">
             <div class="categoria-card">
               <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=700&auto=format&fit=crop"
                 class="w-100 h-100 object-fit-cover" alt="Bebidas y cervezas artesanales">
@@ -60,7 +60,7 @@
         </div>
 
         <div class="col-md-4">
-          <a th:href="@{/#carta}">
+          <a th:href="@{/categoria(cat='piqueos')}">
             <div class="categoria-card">
               <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=700&auto=format&fit=crop"
                 class="w-100 h-100 object-fit-cover" alt="Piqueos y complementos">
@@ -192,8 +192,9 @@
             </div>
             <div class="col-md-6">
               <label for="telefono" class="form-label">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono" required>
-              <div class="invalid-feedback">Necesitamos un teléfono de contacto.</div>
+              <input type="tel" class="form-control" id="telefono" required
+                    pattern="9[0-9]{8}" maxlength="9" inputmode="numeric">
+              <div class="invalid-feedback">Ingresa un celular de 9 dígitos que empiece con 9.</div>
             </div>
             <div class="col-md-4">
               <label for="fecha" class="form-label">Fecha</label>
@@ -209,10 +210,12 @@
               <label for="personas" class="form-label">N° de personas</label>
               <select class="form-select" id="personas" required>
                 <option value="" selected disabled>Elige</option>
-                <option>1 - 2</option>
-                <option>3 - 4</option>
-                <option>5 - 6</option>
-                <option>7 a más</option>
+                <option value="1">1 persona</option>
+                <option value="2">2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+                <option value="5">5 personas</option>
+                <option value="7">7 personas a más</option>
               </select>
               <div class="invalid-feedback">Selecciona una opción.</div>
             </div>
@@ -262,12 +265,9 @@
     <i class="bi bi-whatsapp"></i>
   </a>
 
- 
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script th:src="@{/js/data.js}"></script>
+  <script th:src="@{/js/api.js}"></script>
   <script th:src="@{/js/auth.js}"></script>
   <script th:src="@{/js/script.js}"></script>
 </body>
-
 </html>
