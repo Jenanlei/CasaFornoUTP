@@ -125,3 +125,77 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+/* ================= Categorías de la carta (desde la base de datos) ================= */
+
+// La base solo guarda slug, nombre, icono y visible. La foto y el texto de las
+// categorías conocidas se asignan aquí por slug; las nuevas usan la imagen por defecto.
+const CF_IMAGEN_CATEGORIA_DEFECTO = '/img/categoria.png';
+const CF_IMAGENES_CATEGORIA = {
+  pizzas: 'https://images.unsplash.com/photo-1548369937-47519962c11a?q=80&w=700&auto=format&fit=crop',
+  bebidas: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=700&auto=format&fit=crop',
+  piqueos: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=700&auto=format&fit=crop'
+};
+const CF_DESCRIPCIONES_CATEGORIA = {
+  pizzas: 'Masa madre, horneadas a leña.',
+  bebidas: 'Limonadas, jugos y cerveza artesanal.',
+  piqueos: 'Alitas BBQ, salchipapa y más.'
+};
+
+// Evita que un nombre con símbolos como < o " rompa el HTML
+function cfEscapar(texto) {
+  const reemplazos = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  return String(texto == null ? '' : texto).replace(/[&<>"']/g, c => reemplazos[c]);
+}
+
+async function cfCargarCategorias() {
+  const contenedor = document.getElementById('categoriasHome');
+  const menu = document.getElementById('cartaDropdownMenu');
+  if (!contenedor && !menu) return;
+
+  let categorias;
+  try {
+    const lista = await cfApi('/api/categorias');
+    categorias = lista.filter(c => c.visible !== false);
+  } catch (e) {
+    if (contenedor) {
+      contenedor.innerHTML = '<p class="text-center text-muted py-4">No se pudo cargar la carta. Inténtalo de nuevo.</p>';
+    }
+    return;
+  }
+
+  // Menú "Carta" del navbar
+  if (menu && categorias.length) {
+    menu.innerHTML = categorias.map(c => `
+      <li><a class="dropdown-item" href="/categoria?cat=${encodeURIComponent(c.slug)}">${cfEscapar(c.nombre)}</a></li>
+    `).join('');
+  }
+
+  // Tarjetas de la sección "Nuestra carta"
+  if (contenedor) {
+    if (!categorias.length) {
+      contenedor.innerHTML = '<p class="text-center text-muted py-4">Pronto publicaremos nuestra carta.</p>';
+      return;
+    }
+
+    contenedor.innerHTML = categorias.map(c => {
+      const imagen = CF_IMAGENES_CATEGORIA[c.slug] || CF_IMAGEN_CATEGORIA_DEFECTO;
+      const descripcion = CF_DESCRIPCIONES_CATEGORIA[c.slug] || '';
+      return `
+        <div class="col-md-4">
+          <a href="/categoria?cat=${encodeURIComponent(c.slug)}">
+            <div class="categoria-card">
+              <img src="${imagen}" class="w-100 h-100 object-fit-cover" alt="${cfEscapar(c.nombre)}">
+              <div class="categoria-overlay d-flex flex-column justify-content-end">
+                <h3>${c.icono ? `<i class="bi ${cfEscapar(c.icono)} me-2"></i>` : ''}${cfEscapar(c.nombre)}</h3>
+                ${descripcion ? `<p>${descripcion}</p>` : ''}
+              </div>
+            </div>
+          </a>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', cfCargarCategorias);
