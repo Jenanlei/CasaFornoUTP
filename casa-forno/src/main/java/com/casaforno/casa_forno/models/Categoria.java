@@ -31,6 +31,17 @@ public class Categoria {
     @Column(length = 50)
     private String icono;
 
+    // URL de la foto de la categoría (opcional). Se guarda en MySQL.
+    @Size(max = 500, message = "La URL no puede superar 500 caracteres")
+    @Pattern(regexp = "^(https?://|/).*", message = "La imagen debe ser una URL (https://...) o una ruta (/img/...)")
+    @Column(length = 500)
+    private String imagen;
+
+    // Texto corto que se muestra bajo el nombre en la carta (opcional)
+    @Size(max = 150, message = "La descripción no puede superar 150 caracteres")
+    @Column(length = 150)
+    private String descripcion;
+
     private boolean visible = true;
 
     // Una Categoría tiene muchos Productos

@@ -40,6 +40,8 @@ public class CategoriaController {
         c.setSlug(nueva.getSlug());
         c.setNombre(nueva.getNombre());
         c.setIcono(nueva.getIcono());
+        c.setImagen(nueva.getImagen());
+        c.setDescripcion(nueva.getDescripcion());
         c.setVisible(nueva.isVisible());
         return repo.save(c);
     }

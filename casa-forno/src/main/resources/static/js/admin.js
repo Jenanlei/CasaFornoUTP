@@ -84,8 +84,8 @@ function renderTablaProductos() {
           <p class="mb-0 small text-muted">${p.descripcion || ''}</p>
         </td>
         <td>${p.categoria ? p.categoria.nombre : '—'}</td>
-        <td>S/ ${Number(p.precio).toFixed(2)}</td>
-        <td class="text-end">
+        <td class="text-nowrap">S/ ${Number(p.precio).toFixed(2)}</td>
+        <td class="text-end text-nowrap">
           <button class="btn btn-sm btn-outline-secondary" data-ocultar-producto="${p.id}" title="${oculto ? 'Mostrar' : 'Ocultar'}"><i class="bi ${oculto ? 'bi-eye' : 'bi-eye-slash'}"></i></button>
           <button class="btn btn-sm btn-outline-secondary" data-editar-producto="${p.id}"><i class="bi bi-pencil"></i></button>
           <button class="btn btn-sm btn-outline-danger" data-eliminar-producto="${p.id}"><i class="bi bi-trash"></i></button>
@@ -182,7 +182,7 @@ function renderTablaCategorias() {
       <td><i class="bi ${c.icono} fs-5"></i></td>
       <td class="fw-semibold">${c.nombre} ${oculto ? '<span class="badge-oculto">Oculto</span>' : ''}</td>
       <td><code>${c.slug}</code></td>
-      <td class="text-end">
+      <td class="text-end text-nowrap">
         <button class="btn btn-sm btn-outline-secondary" data-ocultar-categoria="${c.id}" title="${oculto ? 'Mostrar' : 'Ocultar'}"><i class="bi ${oculto ? 'bi-eye' : 'bi-eye-slash'}"></i></button>
         <button class="btn btn-sm btn-outline-secondary" data-editar-categoria="${c.id}"><i class="bi bi-pencil"></i></button>
         <button class="btn btn-sm btn-outline-danger" data-eliminar-categoria="${c.id}"><i class="bi bi-trash"></i></button>
@@ -218,6 +218,8 @@ function abrirModalCategoria(id) {
         campoSlug.disabled = true; // no se cambia el slug de una categoría existente
         document.getElementById('categoriaNombre').value = categoria.nombre;
         document.getElementById('categoriaIcono').value = categoria.icono;
+        document.getElementById('categoriaImagen').value = categoria.imagen || '';
+        document.getElementById('categoriaDescripcion').value = categoria.descripcion || '';
     } else {
         document.getElementById('modalCategoriaTitulo').textContent = 'Nueva categoría';
         document.getElementById('categoriaIdOriginal').value = '';
@@ -234,6 +236,8 @@ async function guardarCategoria(e) {
         slug: document.getElementById('categoriaId').value.trim().toLowerCase(),
         nombre: document.getElementById('categoriaNombre').value.trim(),
         icono: document.getElementById('categoriaIcono').value.trim(),
+        imagen: document.getElementById('categoriaImagen').value.trim() || null,
+        descripcion: document.getElementById('categoriaDescripcion').value.trim() || null,
     };
 
     try {
