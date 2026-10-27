@@ -1,0 +1,30 @@
+<div th:fragment="panelIconos" class="offcanvas offcanvas-end" tabindex="-1" id="panelIconos" aria-labelledby="panelIconosLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title" id="panelIconosLabel">Catálogo de Íconos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <div class="mb-3">
+            <input type="text" id="buscadorIconos" class="form-control"
+                   placeholder="Buscar ícono (ej. star, heart, cart)...">
+        </div>
+
+        <div class="row g-2 text-center" id="grillaIconos"
+             th:with="iconos=${#strings.arraySplit('cup-hot:cafe coffee taza:bi-cup-hot,egg-fried:huevo comida breakfast:bi-egg-fried,cake2:pastel torta dulce postre:bi-cake2,cup-straw:bebida refresco vaso:bi-cup-straw,cart3:carrito compras shop:bi-cart3,bag-heart:bolsa compras favorito:bi-bag-heart,tags-fill:etiquetas ofertas promo:bi-tags-fill,cash-coin:dinero pago precio:bi-cash-coin,credit-card:tarjeta pago:bi-credit-card,star-fill:estrella favorito calificacion:bi-star-fill,heart-fill:corazon me gusta like:bi-heart-fill,fire:fuego popular picante:bi-fire,lightning-charge:rayo rapido energy:bi-lightning,award:premio medalla calidad:bi-award,grid-fill:catalogo categoria menu:bi-grid-fill,box-seam:caja paquete entrega:bi-box-seam,truck:delivery envio camion:bi-truck,clock:reloj tiempo horario:bi-clock,geo-alt:ubicacion local mapa:bi-geo-alt,gear:engranaje configuracion ajustes:bi-gear,info-circle:informacion ayuda info:bi-info-circle', ',')}">
+
+            <!-- Estructura del botón repetitiva con Thymeleaf -->
+            <div th:each="raw : ${iconos}"
+                 th:with="item=${#strings.arraySplit(raw, ':')}, id=${item[0]}, tags=${item[1]}, label=${item[2]}"
+                 class="col-4 item-icono" 
+                 th:attr="data-name=${id + ' ' + tags}">
+                <button type="button" 
+                        class="btn btn-light border w-100 p-2 btn-icono" 
+                        th:attr="data-icon=${'bi-' + id}">
+                    <i th:class="${'bi bi-' + id + ' fs-3 d-block'}"></i>
+                    <small class="d-block text-truncate" style="font-size: 0.72rem;" th:text="${label}"></small>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

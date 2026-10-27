@@ -1,0 +1,48 @@
+<footer th:fragment="piedepagina" class="footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <p class="brand-mark footer-brand mb-3">CASA <span>FORNO</span></p>
+          <p class="text-light-70 small">Pizza artesanal a la leña. Av. Larco 850, Trujillo.<br>Horno de barro encendido
+            todos los días.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <p class="footer-heading text-uppercase">Explora</p>
+          <ul class="list-unstyled footer-links">
+            <li><a th:href="@{/#carta}">Carta</a></li>
+            <li><a th:href="@{/#nosotros}">Nosotros</a></li>
+            <li><a th:href="@{/#galeria}">Galería</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <p class="footer-heading text-uppercase">Horario</p>
+          <ul class="list-unstyled footer-links">
+            <li>Lun &ndash; Dom</li>
+            <li>1:00 pm &ndash; 11:00 pm</li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <p class="footer-heading text-uppercase">Síguenos</p>
+          <div class="d-flex gap-3 fs-5 mb-3">
+            <a href="#" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://wa.me/51949224300" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+          <a href="tel:+51987654321" class="footer-phone">
+            <i class="bi bi-telephone-fill"></i> +51 987 654 321
+          </a>
+        </div>
+
+      </div>
+      <hr class="footer-rule">
+      <p class="text-center small text-light-50 mb-0">&copy; 2026 Casa Forno. Proyecto académico &ndash; Marcos de
+        Desarrollo Web,
+        UTP</p>
+    </div>
+  </footer>

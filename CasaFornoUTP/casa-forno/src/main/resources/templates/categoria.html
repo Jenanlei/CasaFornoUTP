@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Carta | Casa Forno</title>
+  <div th:replace="fragments/head :: head"></div>
+</head>
+
+<body>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav th:replace="fragments/navbar :: navegación"></nav>
+
+  <!-- ENCABEZADO DE CATEGORÍA  -->
+  <header class="categoria-hero d-flex align-items-center">
+    <div class="container position-relative text-center text-white cf-hero-in">
+      <p class="eyebrow eyebrow-light text-uppercase fw-semibold mb-2">Nuestra carta</p>
+      <h1 class="hero-title-sm" id="categoriaTitulo">Categoría</h1>
+      <nav aria-label="breadcrumb" class="d-flex justify-content-center mt-3">
+        <ol class="breadcrumb breadcrumb-forno mb-0">
+          <li class="breadcrumb-item"><a th:href="@{/#carta}">Inicio</a></li>
+          <li class="breadcrumb-item active" id="categoriaBreadcrumb" aria-current="page">Categoría</li>
+        </ol>
+      </nav>
+    </div>
+  </header>
+
+  <!--PRODUCTOS  -->
+  <section class="section">
+    <div class="container">
+      <div class="row g-4" id="categoriaGrid">
+      </div>
+
+      <div class="text-center mt-5">
+        <a th:href="@{/#carta}" class="btn btn-forno-outline-2 px-4"><i class="bi bi-arrow-left me-2"></i>Ver todas
+          las categorías</a>
+      </div>
+    </div>
+  </section>
+  <!--FOOTER-->
+  <footer th:replace="~{fragments/footer :: piedepagina}"></footer>
+
+  <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer"
+    class="whatsapp-float position-fixed rounded-circle d-flex align-items-center justify-content-center"
+    aria-label="Escríbenos por WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!--  BARRA LATERAL: info del local + acceso de clientes  -->
+ <div th:replace="fragments/barraLateral :: barra-lateral"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script th:src="@{/js/api.js}"></script>
+  <script th:src="@{/js/categoria.js}"></script>
+  <script th:src="@{/js/auth.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración | Casa Forno</title>
+    <script>
+        // El login del administrador se hace en /login. Si no hay sesión, vuelve allí antes de pintar la página.
+        if (sessionStorage.getItem('cf_admin_auth') !== '1') { window.location.replace('/login'); }
+    </script>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+
+<body class="admin-body">
+
+    <!-- PANEL -->
+    <div id="panelWrap">
+        <nav class="navbar admin-nav">
+            <div class="container">
+                <a class="navbar-brand brand-mark" th:href="@{/admin}">CASA <span>FORNO</span> <small
+                        class="admin-tag">admin</small></a>
+                <div class="d-flex gap-2">
+                    <a th:href="@{/}" target="_blank" class="btn btn-sm btn-outline-light ">Ver sitio</a>
+                    <button class="btn btn-sm btn-outline-light" id="btnLogout">
+                        Cerrar sesión</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container py-4">
+
+            <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tabBtnProductos" data-bs-toggle="tab"
+                        data-bs-target="#tabProductos" type="button" role="tab" aria-controls="tabProductos"
+                        aria-selected="true">Productos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tabBtnCategorias" data-bs-toggle="tab" data-bs-target="#tabCategorias"
+                        type="button" role="tab" aria-controls="tabCategorias" aria-selected="false">Categorías</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tabBtnReservas" data-bs-toggle="tab" data-bs-target="#tabReservas"
+                        type="button" role="tab" aria-controls="tabReservas" aria-selected="false">Reservas</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="adminTabsContent">
+
+                <!-- ---- PRODUCTOS ---- -->
+                <div class="tab-pane fade show active" id="tabProductos" role="tabpanel"
+                    aria-labelledby="tabBtnProductos" tabindex="0">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 mb-0">Productos</h2>
+                        <button class="btn btn-forno" id="btnNuevoProducto"><i class="bi bi-plus-lg me-1"></i>Nuevo
+                            producto</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaProductos"></tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ---- CATEGORÍAS ---- -->
+                <div class="tab-pane fade" id="tabCategorias" role="tabpanel" aria-labelledby="tabBtnCategorias"
+                    tabindex="0">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 mb-0">Categorías</h2>
+                        <button class="btn btn-forno" id="btnNuevaCategoria"><i class="bi bi-plus-lg me-1"></i>Nueva
+                            categoría</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Ícono</th>
+                                    <th>Nombre</th>
+                                    <th>ID</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaCategorias"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ---- RESERVAS (vienen de MySQL) ---- -->
+                <div class="tab-pane fade" id="tabReservas" role="tabpanel" aria-labelledby="tabBtnReservas"
+                    tabindex="0">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 mb-0">Reservas</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Cliente</th>
+                                    <th>Teléfono</th>
+                                    <th>Personas</th>
+                                    <th>Nota</th>
+                                    <th>Estado</th>
+                                    <th class="text-end">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaReservas"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MODAL PRODUCTO ============ -->
+    <div class="modal fade" id="modalProducto" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formProducto">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalProductoTitulo">Nuevo producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="productoId">
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+                            <select class="form-select" id="productoCategoria" required></select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="productoNombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" id="productoDescripcion" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Precio (S/)</label>
+                            <input type="number" step="0.10" min="0" class="form-control" id="productoPrecio" required>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="form-label">URL de imagen</label>
+                            <input type="url" class="form-control" id="productoImagen" placeholder="https://...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-forno">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MODAL CATEGORÍA ============ -->
+    <div class="modal fade" id="modalCategoria" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="formCategoria">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCategoriaTitulo">Nueva categoría</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="categoriaIdOriginal">
+
+                        <div class="mb-3">
+                            <label class="form-label">ID (sin espacios, minúsculas)</label>
+                            <input type="text" class="form-control" id="categoriaId" pattern="[a-z0-9\-]+" required>
+                            <div class="form-text">Se usa internamente, ej: <code>postres</code></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre visible</label>
+                            <input type="text" class="form-control" id="categoriaNombre" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label class="form-label mb-0">Ícono (Bootstrap Icons)</label>
+                                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="offcanvas"
+                                    data-bs-target="#panelIconos">
+                                    <i class="bi bi-grid-3x3-gap-fill me-1"></i> Seleccionar ícono
+                                </button>
+                            </div>
+
+                            <div class="input-group">
+                                <span class="input-group-text"><i id="iconoPreview" class="bi bi-cup-hot"></i></span>
+                                <input type="text" class="form-control" id="categoriaIcono" placeholder="bi-cup-hot"
+                                    required>
+                            </div>
+                            <div class="form-text">Nombre de clase de <a href="https://icons.getbootstrap.com/"
+                                    target="_blank">Bootstrap Icons</a>, ej: <code>bi-cup-hot</code></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-forno">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/panelIconos :: panelIconos">panel de Iconos</div>
+
+    <!-- ============ MODAL CONFIRMAR ELIMINAR ============ -->
+    <div class="modal fade" id="modalConfirmar" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmarMensaje" class="mb-0"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/api.js}"></script>
+    <script th:src="@{/js/admin.js}"></script>
+</body>
+
+</html>

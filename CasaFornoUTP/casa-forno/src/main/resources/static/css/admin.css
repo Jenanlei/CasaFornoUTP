@@ -1,0 +1,124 @@
+.admin-body {
+    background: #f4f1ea;
+    min-height: 100vh;
+}
+
+#panelIconos {
+    z-index: 1080 !important;
+}
+
+.offcanvas-backdrop {
+    z-index: 1070 !important;
+}
+
+#panelWrap:not(.d-none) {
+    animation: cfFadeUp 0.4s var(--ease-out) both;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    #panelWrap:not(.d-none) {
+        animation: none;
+    }
+}
+
+/* ---------- Nav ---------- */
+.admin-nav {
+    padding: 0.9rem 0;
+    margin-bottom: 0;
+}
+
+.admin-nav .navbar-brand {
+    color: #fff;
+}
+
+.admin-tag {
+    background: var(--forno-gold);
+    color: var(--forno-dark);
+    border-radius: 999px;
+    padding: 0.15em 0.6em;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+}
+
+/* ---------- Tabs ---------- */
+#adminTabs .nav-link {
+    color: var(--texto-suave);
+    font-weight: 500;
+    border: none;
+    border-bottom: 3px solid transparent;
+}
+
+#adminTabs .nav-link.active {
+    color: var(--forno-dark);
+    border-bottom-color: var(--forno-fire);
+    background: transparent;
+}
+
+/* ---------- Tabla ---------- */
+.admin-table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.admin-table thead {
+    background: var(--forno-cream);
+}
+
+.admin-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.admin-table tbody tr:hover {
+    background: var(--forno-cream);
+}
+
+.admin-table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--texto-suave);
+}
+
+.admin-img-mini {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.fila-oculta {
+    opacity: 0.55;
+}
+
+.fila-oculta:hover {
+    opacity: 0.85;
+}
+
+.badge-oculto {
+    background: var(--texto-suave);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.1em 0.55em;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+}
+
+.badge-stock-ok {
+    background: #1e8e4f;
+}
+
+.badge-stock-bajo {
+    background: var(--forno-gold);
+    color: var(--forno-dark);
+}
+
+.badge-stock-agotado {
+    background: var(--forno-fire);
+}

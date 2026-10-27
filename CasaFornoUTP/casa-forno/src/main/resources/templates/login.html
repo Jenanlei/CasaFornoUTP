@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión | Casa Forno</title>
+  <meta name="description" content="Inicia sesión en Casa Forno como cliente o ingresa al panel de administración.">
+  <div th:replace="fragments/head :: head"></div>
+</head>
+
+<body>
+
+  <div class="auth-body">
+    <div class="auth-page d-flex align-items-center justify-content-center ">
+      <div class="auth-card bg-white rounded-5">
+
+        <a th:href="@{/}" class="auth-back small d-inline-flex align-items-center mb-3">
+          <i class="bi bi-arrow-left me-1"></i> Volver al sitio
+        </a>
+
+        <p class="brand-mark brand-mark-ink text-center mb-1 text">CASA <span>FORNO</span></p>
+        <p class="text-center text-muted small mb-4" id="authSubtitulo">Ingresa a tu cuenta</p>
+
+        <!-- ============ SELECTOR: cliente / administrador ============ -->
+        <ul class="nav nav-pills w-100 mb-4 auth-role-toggle" id="authRoleTabs" role="tablist">
+          <li class="nav-item flex-fill" role="presentation">
+            <button class="nav-link active w-100" id="btnRolCliente" data-bs-toggle="pill"
+              data-bs-target="#panelCliente" type="button" role="tab" aria-controls="panelCliente" aria-selected="true">
+              <i class="bi bi-person me-1"></i> Soy cliente
+            </button>
+          </li>
+          <li class="nav-item flex-fill" role="presentation">
+            <button class="nav-link w-100" id="btnRolAdmin" data-bs-toggle="pill" data-bs-target="#panelAdmin"
+              type="button" role="tab" aria-controls="panelAdmin" aria-selected="false">
+              <i class="bi bi-shield-lock me-1"></i> Soy administrador
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="authRoleTabsContent">
+
+          <!-- ============ PANEL: CLIENTE (login + registro) ============ -->
+          <div class="tab-pane fade show active" id="panelCliente" role="tabpanel" aria-labelledby="btnRolCliente"
+            tabindex="0">
+
+            <!-- ---- CLIENTE: iniciar sesión ---- -->
+            <div id="panelClienteLogin">
+              <form id="loginClienteForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label class="form-label" for="loginEmail">Correo</label>
+                  <input type="email" class="form-control" id="loginEmail" autocomplete="username" required>
+                  <div class="invalid-feedback">Ingresa un correo válido.</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="loginClave">Contraseña</label>
+                  <input type="password" class="form-control" id="loginClave" autocomplete="current-password" required>
+                  <div class="invalid-feedback">Ingresa tu contraseña.</div>
+                </div>
+                <div id="loginClienteError" class="alert alert-danger py-2 small d-none">Correo o contraseña
+                  incorrectos.
+                </div>
+                <button type="submit" class="btn btn-forno w-100">Ingresar</button>
+              </form>
+              <p class="text-center small mt-3 mb-0">¿No tienes cuenta? <a href="#" id="irARegistro">Regístrate</a>
+              </p>
+            </div>
+
+            <!-- ---- CLIENTE: registrarme ---- -->
+            <div id="panelClienteRegistro" class="d-none">
+              <form id="registroClienteForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label class="form-label" for="registroNombre">Nombre completo</label>
+                  <input type="text" class="form-control" id="registroNombre" required>
+                  <div class="invalid-feedback">Cuéntanos tu nombre completo.</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="registroEmail">Correo</label>
+                  <input type="email" class="form-control" id="registroEmail" autocomplete="username" required>
+                  <div class="invalid-feedback">Ingresa un correo válido.</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="registroClave">Contraseña</label>
+                  <input type="password" class="form-control" id="registroClave" autocomplete="new-password" required
+                    minlength="4">
+                  <div class="invalid-feedback">Debe tener al menos 4 caracteres.</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="registroClave2">Confirmar contraseña</label>
+                  <input type="password" class="form-control" id="registroClave2" autocomplete="new-password" required
+                    minlength="4">
+                  <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                </div>
+                <div id="registroClienteError" class="alert alert-danger py-2 small d-none"></div>
+                <button type="submit" class="btn btn-forno w-100">Crear cuenta</button>
+              </form>
+              <p class="text-center small mt-3 mb-0">¿Ya tienes cuenta? <a href="#" id="irALogin">Inicia sesión</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- ============ PANEL: ADMINISTRADOR (login) ============ -->
+          <div class="tab-pane fade" id="panelAdmin" role="tabpanel" aria-labelledby="btnRolAdmin" tabindex="0">
+            <form id="loginAdminForm" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label class="form-label" for="adminUsuario">Usuario</label>
+                <input type="text" class="form-control" id="adminUsuario" autocomplete="username" required>
+                <div class="invalid-feedback">Ingresa tu usuario.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="adminClave">Contraseña</label>
+                <input type="password" class="form-control" id="adminClave" autocomplete="current-password" required>
+                <div class="invalid-feedback">Ingresa tu contraseña.</div>
+              </div>
+              <div id="loginAdminError" class="alert alert-danger py-2 small d-none">Usuario o contraseña
+                incorrectos.
+              </div>
+              <button type="submit" class="btn btn-forno w-100">Ingresar al panel</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script th:src="@{/js/api.js}"></script>
+  <script th:src="@{/js/login.js}"></script>
+</body>
+
+</html>
