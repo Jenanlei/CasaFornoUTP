@@ -28,7 +28,7 @@ public class ProductoController {
         return todos.stream().filter(p -> p.getCategoria().getSlug().equals(categoria)).toList();
     }
 
-    @PostMapping ("/nuevoProducto")
+    @PostMapping ("")
     @ResponseStatus(HttpStatus.CREATED)
     public Producto crear(@Valid @RequestBody Producto datos) {
         datos.setId(null);

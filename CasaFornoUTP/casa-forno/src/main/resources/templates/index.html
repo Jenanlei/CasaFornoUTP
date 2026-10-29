@@ -32,45 +32,9 @@
         <h2 class="section-title fw-semibold">Todo sale del mismo horno.</h2>
       </div>
 
-      <div class="row g-4 mb-5">
-        <div class="col-md-4">
-          <a th:href="@{/categoria(cat='pizzas')}">
-            <div class="categoria-card">
-              <img src="https://images.unsplash.com/photo-1548369937-47519962c11a?q=80&w=700&auto=format&fit=crop"
-                class="w-100 h-100 object-fit-cover" alt="Pizzas artesanales a la leña">
-              <div class="categoria-overlay d-flex flex-column justify-content-end">
-                <h3>Pizzas</h3>
-                <p>Masa madre, horneadas a leña.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a th:href="@{/categoria(cat='bebidas')}">
-            <div class="categoria-card">
-              <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=700&auto=format&fit=crop"
-                class="w-100 h-100 object-fit-cover" alt="Bebidas y cervezas artesanales">
-              <div class="categoria-overlay d-flex flex-column justify-content-end">
-                <h3>Bebidas</h3>
-                <p>Limonadas, jugos y cerveza artesanal.</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-md-4">
-          <a th:href="@{/categoria(cat='piqueos')}">
-            <div class="categoria-card">
-              <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=700&auto=format&fit=crop"
-                class="w-100 h-100 object-fit-cover" alt="Piqueos y complementos">
-              <div class="categoria-overlay d-flex flex-column justify-content-end">
-                <h3>Piqueos</h3>
-                <p>Alitas BBQ, salchipapa y más.</p>
-              </div>
-            </div>
-          </a>
-        </div>
+      <!-- Las categorías se cargan desde la base de datos (ver js/script.js) -->
+      <div class="row g-4 mb-5" id="categoriasHome">
+        <p class="text-center text-muted py-4">Cargando la carta...</p>
       </div>
 
       <div class="text-center mt-5">

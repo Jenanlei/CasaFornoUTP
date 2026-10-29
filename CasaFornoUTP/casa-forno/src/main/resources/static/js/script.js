@@ -125,3 +125,67 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+/* ================= Categorías de la carta (desde la base de datos) ================= */
+
+// La foto de cada categoría viene de la base de datos (campo "imagen").
+// Si una categoría no tiene imagen, se usa esta por defecto.
+const CF_IMAGEN_CATEGORIA_DEFECTO = '/img/categoria.png';
+
+// Evita que un nombre con símbolos como < o " rompa el HTML
+function cfEscapar(texto) {
+  const reemplazos = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  return String(texto == null ? '' : texto).replace(/[&<>"']/g, c => reemplazos[c]);
+}
+
+async function cfCargarCategorias() {
+  const contenedor = document.getElementById('categoriasHome');
+  const menu = document.getElementById('cartaDropdownMenu');
+  if (!contenedor && !menu) return;
+
+  let categorias;
+  try {
+    const lista = await cfApi('/api/categorias');
+    categorias = lista.filter(c => c.visible !== false);
+  } catch (e) {
+    if (contenedor) {
+      contenedor.innerHTML = '<p class="text-center text-muted py-4">No se pudo cargar la carta. Inténtalo de nuevo.</p>';
+    }
+    return;
+  }
+
+  // Menú "Carta" del navbar
+  if (menu && categorias.length) {
+    menu.innerHTML = categorias.map(c => `
+      <li><a class="dropdown-item" href="/categoria?cat=${encodeURIComponent(c.slug)}">${cfEscapar(c.nombre)}</a></li>
+    `).join('');
+  }
+
+  // Tarjetas de la sección "Nuestra carta"
+  if (contenedor) {
+    if (!categorias.length) {
+      contenedor.innerHTML = '<p class="text-center text-muted py-4">Pronto publicaremos nuestra carta.</p>';
+      return;
+    }
+
+    contenedor.innerHTML = categorias.map(c => {
+      const imagen = c.imagen || CF_IMAGEN_CATEGORIA_DEFECTO;
+      const descripcion = c.descripcion || '';
+      return `
+        <div class="col-md-4">
+          <a href="/categoria?cat=${encodeURIComponent(c.slug)}">
+            <div class="categoria-card">
+              <img src="${cfEscapar(imagen)}" class="w-100 h-100 object-fit-cover" alt="${cfEscapar(c.nombre)}">
+              <div class="categoria-overlay d-flex flex-column justify-content-end">
+                <h3>${c.icono ? `<i class="bi ${cfEscapar(c.icono)} me-2"></i>` : ''}${cfEscapar(c.nombre)}</h3>
+                ${descripcion ? `<p>${cfEscapar(descripcion)}</p>` : ''}
+              </div>
+            </div>
+          </a>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', cfCargarCategorias);
